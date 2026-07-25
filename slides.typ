@@ -370,7 +370,7 @@ $
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
-    set text(size: 22pt)
+    set text(size: 21pt)
     set block(spacing: 0.5em)
     body
   },
@@ -388,13 +388,13 @@ $
   Since $G= g compose Phi^(-1)$, then $g=G compose Phi$. Since $Phi'=1/a$ (by FTC), then
   $
     g'
-    =(G' compose Phi) Phi'
-    =(G compose Phi) 1/a
-    =g/a.
+    =(G' compose Phi) dot Phi'
+    =(G compose Phi) dot 1/a
+    =g dot 1/a.
   $
   Hence
   $
-    L_2 g=g.
+    L_2 g=alpha (g dot 1/alpha)=g.
   $
 ]
 
