@@ -231,12 +231,11 @@ $
 == Pass the limit through the integral
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 23pt)
     set block(spacing: 0.75em)
-    components.page-container(pad(top: 0.6em, body))
+    body
   },
 )[
   Fix $a<b$. For every $n$, the Fundamental Theorem of Calculus gives the identity
@@ -261,12 +260,11 @@ $
 == The limit is continuous
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 26pt)
     set block(spacing: 0.9em)
-    components.page-container(pad(top: 0.6em, body))
+    body
   },
 )[
   Using the locally uniform bound from before, we show that $g$ is continuous,
@@ -283,12 +281,11 @@ $
 == The limit satisfies $L_1 g=g$
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 26pt)
     set block(spacing: 0.7em)
-    components.page-container(pad(top: 0.6em, body))
+    body
   },
 )[
   Fix $b$. The integral identity becomes
@@ -316,12 +313,11 @@ $
 === The result
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 26pt)
     set block(spacing: 0.75em)
-    components.page-container(pad(top: 0.6em, body))
+    body
   },
 )[
   Let $a in C^oo (RR)$ be nowhere zero, and define
@@ -343,12 +339,11 @@ $
 === Straighten the operator
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 25pt)
     set block(spacing: 0.65em)
-    components.page-container(pad(top: 0.6em, body))
+    body
   },
 )[
   Introduce the new coordinate
@@ -373,23 +368,25 @@ $
 === Pull back the ordinary result
 
 #slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
-    set text(size: 25pt)
-    set block(spacing: 0.65em)
-    components.page-container(pad(top: 0.6em, body))
+    set text(size: 22pt)
+    set block(spacing: 0.5em)
+    body
   },
 )[
   Define
   $
-    G(y):=lim_(n->oo) F^((n))(y)=g(Phi^(-1)(y)).
+    G(y)
+    & := lim_(n->oo) F^((n))(y) \
+    & = lim_(n->oo) (L_2^n f)(Phi^(-1)(y)) \
+    & = g(Phi^(-1)(y)).
   $
   The ordinary derivative result on the interval $I$ gives
   $
     G'=G.
   $
-  Since $g=G compose Phi$ and $Phi'=1/a$,
+  Thus $g=G compose Phi$. Since $Phi'=1/a$,
   $
     g'
     =(G' compose Phi) Phi'
