@@ -207,14 +207,11 @@ $
                     = M(0) exp(abs(x)).
 $
 
-#block(
-  fill: rgb("#F1F5FA"),
-  stroke: 0.8pt + rgb("#245EA8"),
-  radius: 6pt,
-  inset: 10pt,
-)[
-  This gives rise to a locally integrable dominating function, so we can apply Lebesgue's Dominated Convergence Theorem.
-]
+Note that for all $n in NN$ and $x in [a,b]$,
+
+$
+  abs(f^((n+1))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
+$
 
 == Pass the limit through the integral
 
@@ -222,7 +219,7 @@ $
   config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
   align: top,
   setting: body => {
-    set text(size: 26pt)
+    set text(size: 23pt)
     set block(spacing: 0.75em)
     components.page-container(detect-overflow: true, body)
   },
@@ -232,31 +229,13 @@ $
     f^((n))(b)-f^((n))(a)
     = integral_a^b f^((n+1))(x) dif x
   $
-
-  Note that for all $n in NN$ and $x in [a,b]$,
-
-  $
-    abs(f^((n+1))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
-  $
-]
-
-== Apply dominated convergence
-
-#slide(
-  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
-  align: top,
-  setting: body => {
-    set text(size: 26pt)
-    set block(spacing: 0.55em)
-    components.page-container(detect-overflow: true, body)
-  },
-)[
   On $[a,b]$, we have
   $
     f^((n+1))(x) -> g(x)
     quad "and" quad
     abs(f^((n+1))(x)) <= C_([a,b]).
   $
+
   Therefore, by Lebesgue's Dominated Convergence Theorem,
   $
     lim_(n -> oo) integral_a^b f^((n+1))(x) dif x & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
