@@ -197,25 +197,14 @@ $
 so Tao's theorem applies immediately: $f$ is the restriction of an entire
 function.
 
-#block(
-  fill: rgb("#F1F5FA"),
-  stroke: 0.8pt + rgb("#245EA8"),
-  radius: 6pt,
-  inset: 12pt,
-)[
-  The easy pointwise observation unlocks global analytic structure.
-]
-
 == One bound for every derivative
 
-Since $f$ is entire, expand $f^((k))$ at $0$. Every coefficient is
+Since $f$ is the restriction of an entire function, expand $f^((k))$ at $0$. Every coefficient is
 controlled by the _single_ number $M(0)$:
 $
-  f^((k))(x)
-  &= sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n, \
-  abs(f^((k))(x))
-  &<= sum_(n=0)^oo M(0)/(n!) abs(x)^n
-   = M(0) exp(abs(x)).
+       f^((k))(x) & = sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n, \
+  abs(f^((k))(x)) & <= sum_(n=0)^oo M(0)/(n!) abs(x)^n
+                    = M(0) exp(abs(x)).
 $
 
 #block(
@@ -224,30 +213,57 @@ $
   radius: 6pt,
   inset: 10pt,
 )[
-  On every compact interval, this is one integrable bound for _all_
-  derivatives $f^((k))$.
+  This gives rise to a locally integrable dominating function so we can apply Lebesgue's Dominated Convergence Theorem.
 ]
 
 == Pass the limit through the integral
 
-#set block(spacing: 0.7em)
+#set block(spacing: 0.75em)
 
-For every $n$, the Fundamental Theorem of Calculus gives
-$
-  f^((n))(a) - f^((n))(b)
-  = integral_b^a f^((n+1))(x) dif x.
-$
+#text(size: 26pt)[
+  Fix $a<b$. For every $n$, the Fundamental Theorem of Calculus gives the identity
+  $
+    f^((n))(b)-f^((n))(a)
+    = integral_a^b f^((n+1))(x) dif x
+  $
 
-On the compact interval between $a$ and $b$, the estimate
-$
-  abs(f^((n+1))(x)) <= M(0) exp(abs(x)),
-$
-is uniform in $n$. Hence dominated convergence gives
-$
-  g(a)-g(b) = integral_b^a g(x) dif x.
-$
+  Note that for all $n in NN$ and $x in [a,b]$,
 
-The integral identity also shows that $g$ is continuous.
+  $
+    abs(f^((n+1))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
+  $
+]
+
+== Apply dominated convergence
+
+#set block(spacing: 0.55em)
+#text(size: 26pt)[
+  On $[a,b]$, we have
+  $
+    f^((n+1))(x) -> g(x)
+    quad "and" quad
+    abs(f^((n+1))(x)) <= C_([a,b]).
+  $
+  Therefore, by Lebesgue's Dominated Convergence Theorem,
+  $
+    lim_(n -> oo) integral_a^b f^((n+1))(x) dif x & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
+                                                  & = integral_a^b g(x) dif x.
+  $
+]
+
+== Pass the limit through the integral
+
+#set block(spacing: 0.9em)
+
+#text(size: 26pt)[
+
+  Using the locally uniform bound from before, we show that $g$ is continuous,
+  $
+         g(b)-g(a) & = integral_a^b g(x) dif x, \
+    abs(g(b)-g(a)) & <= integral_a^b abs(g(x)) dif x \
+                   & <= C_([a,b]) (b-a).
+  $
+]
 
 == The limit satisfies $g'=g$
 
@@ -255,11 +271,11 @@ The integral identity also shows that $g$ is continuous.
 
 Fix $b$. The integral identity becomes
 $
-  g(a) = g(b) + integral_b^a g(x) dif x.
+  g(x) = g(b) + integral_b^x g(t) dif t.
 $
 Since $g$ is continuous, the Fundamental Theorem of Calculus yields
 $
-  g'(a)=g(a).
+  g'(x)=g(x).
 $
 
 #block(
@@ -272,7 +288,7 @@ $
   #align(center)[
     Thus $g$ is smooth, and solving the ODE gives
     $
-      g(x)=C exp(x)
+      g(x)=C e^x
     $
     for some $C in RR$.
   ]
