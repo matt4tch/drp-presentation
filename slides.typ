@@ -394,7 +394,7 @@ $
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 21pt)
-    set block(spacing: 0.5em)
+    set block(spacing: 0.9em)
     body
   },
 )[
