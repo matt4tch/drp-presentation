@@ -28,12 +28,20 @@
   align: horizon,
   header: self => pad(
     top: header-title-inset,
-    utils.display-current-heading(level: 2, style: auto),
+    utils.display-current-heading(depth: self.slide-level, style: auto),
   ),
   header-right: self => pad(
     top: header-title-inset,
-    box(utils.display-current-heading(level: 1)) + h(0.3em) + self.info.logo,
+    context {
+      let current = utils.current-heading(depth: self.slide-level)
+      let parent-level = if current != none and current.level == 3 { 2 } else { 1 }
+      box(utils.display-current-heading(
+        level: parent-level,
+        depth: self.slide-level,
+      )) + h(0.3em) + self.info.logo
+    },
   ),
+  config-common(slide-level: 3),
   config-page(
     margin: (top: 2em, bottom: 2em, x: 2em),
   ),
@@ -102,15 +110,18 @@
 
 == The original question
 
-Let $f in C^oo (RR)$, and write $d := frac(dif, dif x)$.
+Let $f in C^oo (RR)$, and write
+$
+  L_1 := frac(dif, dif x).
+$
 
 Suppose that for every $x in RR$ the pointwise limit
 $
-  g(x) := lim_(n -> oo) d^n f(x)
+  g(x) := lim_(n -> oo) L_1^n f(x)
 $
 exists.
 
-#strong[Question.] Must $g$ be smooth? Moreover, can we prove $g'=g$?
+#strong[Question.] Must $g$ be smooth? Moreover, can we prove $L_1 g=g$?
 
 #slide(
   config: config-page(
@@ -265,7 +276,7 @@ $
   $
 ]
 
-== The limit satisfies $g'=g$
+== The limit satisfies $L_1 g=g$
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
@@ -285,7 +296,7 @@ $
     g'(x)=g(x).
   $
 
-  Thus $g$ is smooth, and solving the ODE gives
+  Thus $L_1 g=g$, so $g$ is smooth. Solving the ODE gives
   $
     g(x)=C e^x
   $
@@ -294,7 +305,11 @@ $
 
 = Extensions
 
-== The result
+== $L_2 f:=a f'$
+
+#new-section-slide(level: 2)[]
+
+=== The result
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
@@ -307,23 +322,21 @@ $
 )[
   Let $a in C^oo (RR)$ be nowhere zero, and define
   $
-    L f := a f'.
+    L_2 f := a f'.
   $
   Suppose that the pointwise limit
   $
-    g(x):=lim_(n->oo) L^n f(x)
+    g(x):=lim_(n->oo) L_2^n f(x)
   $
   exists for every $x in RR$.
 
   We will show that
   $
-    L g=g,
-    quad "equivalently," quad
-    a g'=g.
+    L_2 g=g.
   $
 ]
 
-== Straighten the operator
+=== Straighten the operator
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
@@ -345,15 +358,15 @@ $
   $
   The chain rule gives
   $
-    F'=(L f) compose Phi^(-1),
+    F'=(L_2 f) compose Phi^(-1),
   $
   and therefore, for every $n>=0$,
   $
-    F^((n))=(L^n f) compose Phi^(-1).
+    F^((n))=(L_2^n f) compose Phi^(-1).
   $
 ]
 
-== Pull back the ordinary result
+=== Pull back the ordinary result
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
@@ -381,39 +394,53 @@ $
   $
   Hence
   $
-    a g'=g,
-    quad "so" quad
-    L g=g.
+    L_2 g=g.
   $
 ]
 
-= Further operators
+== $L_3 f:=a f'+f$
 
-== The operator $L f=a f'+f$
+#new-section-slide(level: 2)[]
+
+=== The result
 
 // Record the stronger conclusion for this special case.
 
-== The operator $L f=a f'+b f$
+== $L_4 f:=a f'+b f$
+
+#new-section-slide(level: 2)[]
+
+=== The result
 
 // State the general nondegenerate first-order result.
 
-== A simple zero: $L f=x f'$
+== $L_5 f:=x f'$
+
+#new-section-slide(level: 2)[]
+
+=== A simple zero
 
 // State the affine rigidity result.
 
-== A double zero: $L f=x^2 f'$
+== $L_6 f:=x^2 f'$
+
+#new-section-slide(level: 2)[]
+
+=== A double zero
 
 // State the one-sided flat limit.
 
 
 = Future directions
 
+== Structure and open problems
+
 // Present the transient, input, and fixed-point spaces.
-== The spaces $A$, $B$, and $C$
+=== The spaces $A$, $B$, and $C$
 
-== Open Problems
+=== Open Problems
 
-==
+===
 // Add the future directions for the project.
 
 #focus-slide[
