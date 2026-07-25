@@ -375,13 +375,12 @@ $
     body
   },
 )[
-  Define
+  Note that
   $
-    G(y)
-    & := lim_(n->oo) F^((n))(y) \
-    & = lim_(n->oo) (L_2^n f)(Phi^(-1)(y)) \
-    & = g(Phi^(-1)(y)).
+    lim_(n->oo) F^((n))(y) & = lim_(n->oo) (L_2^n f)(Phi^(-1)(y)) \
+                           & = g(Phi^(-1)(y))
   $
+  exists. So, we can define $ G(y)=lim_(n->oo) F^((n))(y). $
   The ordinary derivative result on the interval $I$ gives
   $
     G'=G.
