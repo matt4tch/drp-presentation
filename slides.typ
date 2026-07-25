@@ -213,14 +213,20 @@ $
   radius: 6pt,
   inset: 10pt,
 )[
-  This gives rise to a locally integrable dominating function so we can apply Lebesgue's Dominated Convergence Theorem.
+  This gives rise to a locally integrable dominating function, so we can apply Lebesgue's Dominated Convergence Theorem.
 ]
 
 == Pass the limit through the integral
 
-#set block(spacing: 0.75em)
-
-#text(size: 26pt)[
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 26pt)
+    set block(spacing: 0.75em)
+    components.page-container(detect-overflow: true, body)
+  },
+)[
   Fix $a<b$. For every $n$, the Fundamental Theorem of Calculus gives the identity
   $
     f^((n))(b)-f^((n))(a)
@@ -236,8 +242,15 @@ $
 
 == Apply dominated convergence
 
-#set block(spacing: 0.55em)
-#text(size: 26pt)[
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 26pt)
+    set block(spacing: 0.55em)
+    components.page-container(detect-overflow: true, body)
+  },
+)[
   On $[a,b]$, we have
   $
     f^((n+1))(x) -> g(x)
@@ -251,12 +264,17 @@ $
   $
 ]
 
-== Pass the limit through the integral
+== The limit is continuous
 
-#set block(spacing: 0.9em)
-
-#text(size: 26pt)[
-
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 26pt)
+    set block(spacing: 0.9em)
+    components.page-container(detect-overflow: true, body)
+  },
+)[
   Using the locally uniform bound from before, we show that $g$ is continuous,
   $
          g(b)-g(a) & = integral_a^b g(x) dif x, \
@@ -267,24 +285,24 @@ $
 
 == The limit satisfies $g'=g$
 
-#set block(spacing: 0.7em)
-
-Fix $b$. The integral identity becomes
-$
-  g(x) = g(b) + integral_b^x g(t) dif t.
-$
-Since $g$ is continuous, the Fundamental Theorem of Calculus yields
-$
-  g'(x)=g(x).
-$
-
-#block(
-  width: 100%,
-  fill: rgb("#F1F5FA"),
-  stroke: 0.8pt + rgb("#245EA8"),
-  radius: 6pt,
-  inset: 10pt,
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 26pt)
+    set block(spacing: 0.7em)
+    components.page-container(detect-overflow: true, body)
+  },
 )[
+  Fix $b$. The integral identity becomes
+  $
+    g(x) = g(b) + integral_b^x g(t) dif t.
+  $
+  Since $g$ is continuous, the Fundamental Theorem of Calculus yields
+  $
+    g'(x)=g(x).
+  $
+
   #align(center)[
     Thus $g$ is smooth, and solving the ODE gives
     $
