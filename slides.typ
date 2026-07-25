@@ -336,7 +336,7 @@ $
   $
 ]
 
-=== Straighten the operator
+=== Change coordinates
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
@@ -348,7 +348,7 @@ $
 )[
   Introduce the new coordinate
   $
-    Phi(x):=integral_0^x 1/(a(t)) dif t.
+    Phi:RR ->RR, x mapsto integral_0^x 1/(a(t)) dif t.
   $
   Since $a$ is nowhere zero, $Phi$ is a diffeomorphism from $RR$ onto an open interval
   $I:=Phi(RR)$. Set
@@ -371,7 +371,7 @@ $
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 24pt)
-    set block(spacing: 0.5em)
+    set block(spacing: 0.75em)
     body
   },
 )[
