@@ -394,7 +394,7 @@ $
   $
   Hence
   $
-    L_2 g=alpha g'=a (g dot 1/a)=g.
+    L_2 g=a g'=a (g dot 1/a)=g.
   $
 ]
 
