@@ -4,20 +4,47 @@
 
 #import "@preview/numbly:0.1.0": numbly
 
+#let nospace = $#h(0pt)$
+
+
 #let thm = thmbox.with(
-  color: rgb("#C5283D"),
-  variant: [Theorem],
-  fill: rgb("#fdf1f2"),
+  color: rgb("#245EA8"),
+  variant: [Theorem 1],
+  fill: rgb("#F1F5FA"),
   numbering: none,
   sans: false,
   title-fonts: ("Libertinus Serif",),
 )
 
+#let theme-primary = rgb("#04364A")
+#let theme-secondary = rgb("#176B87")
+#let theme-tertiary = rgb("#448C95")
+#let intro-paper = rgb("#F5F3EF")
+#let intro-border = rgb("#D7DEE2")
+#let header-title-inset = 0.4em
+
 #show: university-theme.with(
   aspect-ratio: "16-9",
+  align: horizon,
+  header: self => pad(
+    top: header-title-inset,
+    utils.display-current-heading(level: 2, style: auto),
+  ),
+  header-right: self => pad(
+    top: header-title-inset,
+    box(utils.display-current-heading(level: 1)) + h(0.3em) + self.info.logo,
+  ),
+  config-page(
+    margin: (top: 2em, bottom: 2em, x: 2em),
+  ),
+  config-colors(
+    primary: theme-primary,
+    secondary: theme-secondary,
+    tertiary: theme-tertiary,
+  ),
   config-info(
     title: [Iteration of linear differential operators],
-    author: [Jake Edmonstone and Matthew Tchouikine],
+    author: [Jake Edmonstone, Matthew Tchouikine],
     date: datetime.today(),
     institution: [
       #emph[Mentor: Paul Cusson]
@@ -28,43 +55,136 @@
 )
 
 #set heading(numbering: numbly("{1}.", default: "1.1"))
-#set text(size: 19pt)
 
 #title-slide(authors: ([Jake Edmonstone], [Matthew Tchouikine]))
 
 = The original problem
 
-== Iterating the derivative
+#slide(
+  config: config-page(
+    fill: intro-paper,
+    margin: 1em,
+    header: none,
+    footer: none,
+  ),
+  align: horizon,
+)[
+  #set text(fill: theme-primary, weight: "regular")
+  #align(center)[
+    #block(
+      fill: white,
+      stroke: 0.8pt + intro-border,
+      radius: 8pt,
+      inset: 4pt,
+    )[
+      #image(
+        "assets/mathoverflow/question-crop-left-tight.png",
+        width: 650pt,
+      )
 
-#align(center)[
-  #emph[After differentiating forever, what can remain?]
+      #place(bottom + right, dx: -12pt, dy: -12pt)[
+        #block(
+          width: 215pt,
+          fill: white,
+          stroke: 1.2pt + theme-secondary,
+          radius: 7pt,
+          inset: 4pt,
+        )[
+          #image(
+            "assets/mathoverflow/paul-cusson-badge.png",
+            width: 207pt,
+          )
+        ]
+      ]
+    ]
+  ]
 ]
 
-#thm[
-  Let $D = upright(d)/(upright(d)x)$ and let $f in C^infinity(RR)$. Suppose that
-  $
-    g(x) := lim_(n -> infinity) D^n f(x)
-  $
-  exists for every $x in RR$. Then $g$ is smooth and satisfies
-  $
-    g'=g.
-  $
-  Hence $g(x)=C exp(x)$ for some $C in RR$.
-]
+== The original question
 
-- If $f$ is a polynomial, then $D^n f -> 0$.
-- If $f=exp+p$ with $p$ a polynomial, then $D^n f -> exp$.
-- The difficulty: pointwise convergence alone does not let us interchange a limit and a derivative.
+Let $f in C^oo (RR)$, and write $d := frac(dif, dif x)$.
+
+Suppose that for every $x in RR$ the pointwise limit
+$
+  g(x) := lim_(n -> oo) d^n f(x)
+$
+exists.
+
+#strong[Question.] Must $g$ be smooth? Moreover, can we prove $g'=g$?
+
+#slide(
+  config: config-page(
+    fill: intro-paper,
+    margin: 1em,
+    header: none,
+    footer: none,
+  ),
+  align: horizon,
+)[
+  #set text(fill: theme-primary, weight: "regular")
+  #align(center)[
+    #stack(
+      dir: ttb,
+      spacing: 12pt,
+      align(center)[
+        #text(size: 22pt, weight: "bold")[
+          A direct answer:
+        ]
+      ],
+      block(
+        fill: white,
+        stroke: 0.8pt + intro-border,
+        radius: 8pt,
+        inset: 4pt,
+      )[
+        #image(
+          "assets/mathoverflow/tao-theorem.png",
+          width: 640pt,
+        )
+      ],
+      block(width: 650pt)[
+        #grid(
+          columns: (1fr, 155pt),
+          column-gutter: 18pt,
+          align: horizon,
+          [
+            #text(size: 16pt, weight: "bold")[
+              The convergence hypothesis actually forces $f$ to be a restriction of an entire function.
+            ]
+          ],
+          [
+            #block(
+              width: 155pt,
+              fill: white,
+              stroke: 1.2pt + theme-secondary,
+              radius: 7pt,
+              inset: 4pt,
+            )[
+              #image(
+                "assets/mathoverflow/terence-tao-badge.png",
+                width: 147pt,
+              )
+            ]
+          ],
+        )
+      ],
+    )
+  ]
+]
 
 == Tao's analyticity theorem
 
+// State the theorem and outline its role in the original problem.
 #thm[
-  Let $f in C^infinity(RR)$ and define
+  Let $f in C^oo (RR)$, and suppose that for every $x in RR$,
   $
-    M(x):=sup_(k>=0) abs(f^((k))(x)).
+    M(x) := sup_(m >= 0) abs(f^((m)) (x)) < oo.
   $
-  If $M(x)<infinity$ for every $x in RR$, then $f$ is the restriction of an entire function.
+  Then $f$ is the restriction to $RR$ of an entire function. Equivalently,
+  $f$ is real analytic with infinite radius of convergence.
 ]
+
+== The limit equation $g'=g$
 
 #grid(
   columns: (1fr, 1fr),
@@ -74,7 +194,7 @@
 
     For each fixed $x$, the sequence
     $
-      (f^((n))(x))_(n>=0)
+      (f^((n))(x))nospace_(n>=0)
     $
     converges, so it is bounded.
   ],
@@ -87,260 +207,40 @@
     $
   ],
 )
-
 The proof uses Baire category to turn pointwise bounds into local uniform control, followed by Taylor's theorem.
-
-== The limit equation $g'=g$
-
-For $a,b in RR$, the Fundamental Theorem of Calculus gives
-$
-  f^((n))(a)-f^((n))(b)
-  = integral_b^a f^((n+1))(x) upright(d)x.
-$
-
-The analytic estimate supplies a common integrable bound on every compact interval. Dominated convergence therefore gives
-$
-  g(a)-g(b)=integral_b^a g(x) upright(d)x.
-$
-
-Consequently, $g$ is continuous and
-$
-  g'(a)=g(a).
-$
-
-#align(center)[
-  #thm[
-    Every possible limit is of the form $g(x)=C exp(x)$.
-  ]
-]
-
-= Extensions and examples
 
 == The operator $L f=a f'$
 
-Assume $a in C^infinity (RR)$ is nowhere zero and
-$
-  (L f)(x)=a(x)f'(x).
-$
-
-Straighten the vector field with
-$
-  Phi(x):=integral_0^x 1/(a(t)) upright(d)t,
-  quad F:=f compose Phi^(-1).
-$
-Then
-$
-  F^((n))=(L^n f) compose Phi^(-1).
-$
-
-The ordinary-derivative result applied to $F$ yields:
-
-#thm[
-  If $L^n f(x)$ converges pointwise to $g(x)$, then
-  $
-    L g=g,
-    quad "equivalently" quad a g'=g.
-  $
-]
+// Assume that a is nowhere zero.
 
 == The operator $L f=a f'+f$
 
-Again assume that $a$ is nowhere zero, but now let
-$
-  L f=a f'+f.
-$
-
-With the same coordinate $y=Phi(x)$, introduce the integrating factor
-$
-  F(y):=exp(y)f(Phi^(-1)(y)).
-$
-Then
-$
-  F^((n))(y)
-  =exp(y)(L^n f)(Phi^(-1)(y)).
-$
-
-#thm[
-  If $L^n f$ converges pointwise to $g$, then $L g=g$. In this special case,
-  $
-    a g'+g=g,
-  $
-  so $g'=0$: every possible limit is constant.
-]
+// Record the stronger conclusion for this special case.
 
 == The operator $L f=a f'+b f$
 
-Let $a,b in C^infinity(RR)$ with $a$ nowhere zero, and set
-$
-  L f=a f'+b f.
-$
-
-The coordinate change $y=Phi(x)$ and the integrating factor
-$
-  W(y):=exp(integral_(y_0)^y b(Phi^(-1)(s)) upright(d)s)
-$
-transform iteration of $L$ into ordinary differentiation.
-
-#thm[
-  If $L^n f$ converges pointwise to $g$, then
-  $
-    L g=g.
-  $
-  Thus either $g=0$, or
-  $
-    g(x)=C exp(integral_(x_0)^x (1-b(t))/(a(t)) upright(d)t).
-  $
-]
+// State the general nondegenerate first-order result.
 
 == A simple zero: $L f=x f'$
 
-Now the coefficient of $f'$ vanishes, so there is no single global change of coordinates.
-
-On each half-line, use
-$
-  y=log abs(x).
-$
-This turns $x D$ into ordinary differentiation. The two half-line solutions must then be matched smoothly at $0$.
-
-#thm[
-  If $(x D)^n f(x)$ converges for every $x$, then
-  $
-    f(x)=alpha+beta x
-  $
-  and
-  $
-    g(x)=beta x.
-  $
-]
-
-The simple zero is still rigid: smoothness at the origin forces the two sides to agree.
+// State the affine rigidity result.
 
 == A double zero: $L f=x^2 f'$
 
-Use the coordinate
-$
-  y=-1/x
-$
-separately on the two half-lines.
+// State the one-sided flat limit.
 
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1em,
-  [
-    $x>0$
-
-    $x->0^+$ corresponds to $y->-infinity$.
-
-    A flat eigenfunction can survive.
-  ],
-  [
-    $x<0$
-
-    $x->0^-$ corresponds to $y->+infinity$.
-
-    Boundedness forces the eigenfunction coefficient to vanish.
-  ],
-)
-
-#thm[
-  Every pointwise limit has the form
-  $
-    g(x)=cases(
-      C exp(-1/x)\, & x>0,
-      0\, & x<=0.
-    )
-  $
-  Every $C in RR$ can occur.
-]
-
-== One proof in detail: the double zero
-
-Define $Phi_+(x)=-1/x$ on $(0,infinity)$ and
-$
-  F_+:=f compose Phi_+^(-1).
-$
-The chain rule gives
-$
-  F_+^((n))=(L^n f) compose Phi_+^(-1).
-$
-
-Thus the local ordinary-derivative result gives
-$
-  G_+(y):=lim_(n->infinity)F_+^((n))(y)=C_+ exp(y),
-$
-and hence $g(x)=C_+ exp(-1/x)$ for $x>0$.
-
-On $x<0$, the same calculation gives $G_-(y)=C_- exp(y)$. But
-$
-  F_-(y)=f(-1/y)->f(0)
-$
-as $y->infinity$, so $F_-$ is bounded and $C_-=0$. Smooth gluing at $0$ finishes the proof.
-
-== The spaces $A$, $B$, and $C$
-
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 0.8em,
-  [
-    #align(center)[*Transient*]
-    $
-      A={h: L^n h -> 0}.
-    $
-  ],
-  [
-    #align(center)[*Inputs*]
-    $
-      B={f: L^n f " converges"}.
-    $
-  ],
-  [
-    #align(center)[*Fixed points*]
-    $
-      C={g: L g=g}.
-    $
-  ],
-)
-
-Whenever pointwise limits are smooth and satisfy $L g=g$,
-$
-  B=A+C.
-$
-
-Indeed, if $f in B$ and $g=lim_n L^n f$, then
-$
-  f=(f-g)+g,
-  quad f-g in A,
-  quad g in C.
-$
-
-Conversely, $h in A$ and $g in C$ imply
-$
-  L^n (h+g)=L^n h+g -> g.
-$
 
 = Future directions
 
-== Open problems and next steps
+// Present the transient, input, and fixed-point spaces.
+== The spaces $A$, $B$, and $C$
 
-- *Zeros of the leading coefficient:* classify the limits when $a$ vanishes to arbitrary order or changes sign.
+== Open Problems
 
-- *Higher-order operators:* understand iteration of
-  $
-    L=sum_(k=0)^m a_k (x) D^k.
-  $
-
-- *Other notions of convergence:* replace pointwise convergence by convergence in $C^k$, $L^p$, or distributional topologies.
-
-- *Dynamics and spectrum:* interpret
-  $
-    f mapsto lim_(n->infinity) L^n f
-  $
-  as a projection onto the fixed-point space.
-
-#align(center)[
-  #emph[How much of a function can survive infinite iteration?]
-]
+==
+// Add the future directions for the project.
 
 #focus-slide[
   Questions?
 ]
+
