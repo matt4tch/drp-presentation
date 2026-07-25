@@ -49,7 +49,7 @@
     institution: [
       #emph[Mentor: Paul Cusson]
       #linebreak()
-      #emph[University of Waterloo, Directed Reading Program]
+      #emph[University of Waterloo, Directed Research Program]
     ],
   ),
 )
@@ -292,7 +292,7 @@ $
   for some $C in RR$.
 ]
 
-= The operator $L f=a f'$
+= Extensions
 
 == The result
 
@@ -305,7 +305,7 @@ $
     components.page-container(pad(top: 0.6em, body))
   },
 )[
-  Let $a in C^oo(RR)$ be nowhere zero, and define
+  Let $a in C^oo (RR)$ be nowhere zero, and define
   $
     L f := a f'.
   $
