@@ -219,7 +219,7 @@ controlled by the _single_ number $M(0)$:
 $
        f^((k))(x) & = sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n, \
   abs(f^((k))(x)) & <= sum_(n=0)^oo M(0)/(n!) abs(x)^n
-                    = M(0) e(abs(x)).
+                    = M(0) e^(abs(x)).
 $
 
 Note that for all $n in NN$ and $x in [a,b]$,
