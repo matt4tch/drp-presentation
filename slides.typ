@@ -35,10 +35,14 @@
     context {
       let current = utils.current-heading(depth: self.slide-level)
       let parent-level = if current != none and current.level == 3 { 2 } else { 1 }
-      box(utils.display-current-heading(
-        level: parent-level,
-        depth: self.slide-level,
-      )) + h(0.3em) + self.info.logo
+      (
+        box(utils.display-current-heading(
+          level: parent-level,
+          depth: self.slide-level,
+        ))
+          + h(0.3em)
+          + self.info.logo
+      )
     },
   ),
   config-common(slide-level: 3),
@@ -349,7 +353,7 @@ $
 )[
   Introduce the new coordinate
   $
-    y=Phi(x):=integral_0^x 1/(a(t)) dif t.
+    Phi(x):=integral_0^x 1/(a(t)) dif t.
   $
   Since $a$ is nowhere zero, $Phi$ is a diffeomorphism from $RR$ onto an open interval
   $I:=Phi(RR)$. Set
