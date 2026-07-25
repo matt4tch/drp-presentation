@@ -385,7 +385,7 @@ $
   $
     G'=G.
   $
-  Thus $g=G compose Phi$. Since $Phi'=1/a$,
+  Since $G= g compose Phi^(-1)$, then $g=G compose Phi$. Since $Phi'=1/a$ (by FTC), then
   $
     g'
     =(G' compose Phi) Phi'
