@@ -221,7 +221,7 @@ $
   setting: body => {
     set text(size: 23pt)
     set block(spacing: 0.75em)
-    components.page-container(detect-overflow: true, body)
+    components.page-container(pad(top: 0.6em, body))
   },
 )[
   Fix $a<b$. For every $n$, the Fundamental Theorem of Calculus gives the identity
@@ -251,7 +251,7 @@ $
   setting: body => {
     set text(size: 26pt)
     set block(spacing: 0.9em)
-    components.page-container(detect-overflow: true, body)
+    components.page-container(pad(top: 0.6em, body))
   },
 )[
   Using the locally uniform bound from before, we show that $g$ is continuous,
@@ -273,7 +273,7 @@ $
   setting: body => {
     set text(size: 26pt)
     set block(spacing: 0.7em)
-    components.page-container(detect-overflow: true, body)
+    components.page-container(pad(top: 0.6em, body))
   },
 )[
   Fix $b$. The integral identity becomes
@@ -292,9 +292,102 @@ $
   for some $C in RR$.
 ]
 
-== The operator $L f=a f'$
+= The operator $L f=a f'$
 
-// Assume that a is nowhere zero.
+== The result
+
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 26pt)
+    set block(spacing: 0.75em)
+    components.page-container(pad(top: 0.6em, body))
+  },
+)[
+  Let $a in C^oo(RR)$ be nowhere zero, and define
+  $
+    L f := a f'.
+  $
+  Suppose that the pointwise limit
+  $
+    g(x):=lim_(n->oo) L^n f(x)
+  $
+  exists for every $x in RR$.
+
+  We will show that
+  $
+    L g=g,
+    quad "equivalently," quad
+    a g'=g.
+  $
+]
+
+== Straighten the operator
+
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 25pt)
+    set block(spacing: 0.65em)
+    components.page-container(pad(top: 0.6em, body))
+  },
+)[
+  Introduce the new coordinate
+  $
+    y=Phi(x):=integral_0^x 1/(a(t)) dif t.
+  $
+  Since $a$ is nowhere zero, $Phi$ is a diffeomorphism from $RR$ onto an open interval
+  $I:=Phi(RR)$. Set
+  $
+    F:=f compose Phi^(-1):I->RR.
+  $
+  The chain rule gives
+  $
+    F'=(L f) compose Phi^(-1),
+  $
+  and therefore, for every $n>=0$,
+  $
+    F^((n))=(L^n f) compose Phi^(-1).
+  $
+]
+
+== Pull back the ordinary result
+
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.2em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 25pt)
+    set block(spacing: 0.65em)
+    components.page-container(pad(top: 0.6em, body))
+  },
+)[
+  Define
+  $
+    G(y):=lim_(n->oo) F^((n))(y)=g(Phi^(-1)(y)).
+  $
+  The ordinary derivative result on the interval $I$ gives
+  $
+    G'=G.
+  $
+  Since $g=G compose Phi$ and $Phi'=1/a$,
+  $
+    g'
+    =(G' compose Phi) Phi'
+    =(G compose Phi) 1/a
+    =g/a.
+  $
+  Hence
+  $
+    a g'=g,
+    quad "so" quad
+    L g=g.
+  $
+]
+
+= Further operators
 
 == The operator $L f=a f'+f$
 
