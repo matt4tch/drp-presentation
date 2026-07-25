@@ -184,30 +184,99 @@ exists.
   $f$ is real analytic with infinite radius of convergence.
 ]
 
-== The limit equation $g'=g$
+== Why Tao's theorem applies
 
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1.2em,
-  [
-    *Why it applies*
+For each fixed $x in RR$, the sequence
+$
+  (f^((n))(x))nospace_(n>=0)
+$
+converges, hence is bounded. Therefore
+$
+  M(x) = sup_(n>=0) abs(f^((n))(x)) < oo,
+$
+so Tao's theorem applies immediately: $f$ is the restriction of an entire
+function.
 
-    For each fixed $x$, the sequence
-    $
-      (f^((n))(x))nospace_(n>=0)
-    $
-    converges, so it is bounded.
-  ],
-  [
-    *What it gives*
+#block(
+  fill: rgb("#F1F5FA"),
+  stroke: 0.8pt + rgb("#245EA8"),
+  radius: 6pt,
+  inset: 12pt,
+)[
+  The easy pointwise observation unlocks global analytic structure.
+]
 
-    The pointwise hypothesis secretly forces global analytic rigidity and the estimate
+== One bound for every derivative
+
+Since $f$ is entire, expand $f^((k))$ at $0$. Every coefficient is
+controlled by the _single_ number $M(0)$:
+$
+  f^((k))(x)
+  &= sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n, \
+  abs(f^((k))(x))
+  &<= sum_(n=0)^oo M(0)/(n!) abs(x)^n
+   = M(0) exp(abs(x)).
+$
+
+#block(
+  fill: rgb("#F1F5FA"),
+  stroke: 0.8pt + rgb("#245EA8"),
+  radius: 6pt,
+  inset: 10pt,
+)[
+  On every compact interval, this is one integrable bound for _all_
+  derivatives $f^((k))$.
+]
+
+== Pass the limit through the integral
+
+#set block(spacing: 0.7em)
+
+For every $n$, the Fundamental Theorem of Calculus gives
+$
+  f^((n))(a) - f^((n))(b)
+  = integral_b^a f^((n+1))(x) dif x.
+$
+
+On the compact interval between $a$ and $b$, the estimate
+$
+  abs(f^((n+1))(x)) <= M(0) exp(abs(x)),
+$
+is uniform in $n$. Hence dominated convergence gives
+$
+  g(a)-g(b) = integral_b^a g(x) dif x.
+$
+
+The integral identity also shows that $g$ is continuous.
+
+== The limit satisfies $g'=g$
+
+#set block(spacing: 0.7em)
+
+Fix $b$. The integral identity becomes
+$
+  g(a) = g(b) + integral_b^a g(x) dif x.
+$
+Since $g$ is continuous, the Fundamental Theorem of Calculus yields
+$
+  g'(a)=g(a).
+$
+
+#block(
+  width: 100%,
+  fill: rgb("#F1F5FA"),
+  stroke: 0.8pt + rgb("#245EA8"),
+  radius: 6pt,
+  inset: 10pt,
+)[
+  #align(center)[
+    Thus $g$ is smooth, and solving the ODE gives
     $
-      abs(f^((k))(x)) <= M(0) exp(abs(x)).
+      g(x)=C exp(x)
     $
-  ],
-)
-The proof uses Baire category to turn pointwise bounds into local uniform control, followed by Taylor's theorem.
+    for some $C in RR$.
+  ]
+]
 
 == The operator $L f=a f'$
 
@@ -243,4 +312,3 @@ The proof uses Baire category to turn pointwise bounds into local uniform contro
 #focus-slide[
   Questions?
 ]
-
