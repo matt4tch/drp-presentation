@@ -1,6 +1,6 @@
 # Iteration of Linear Differential Operators
 
-This repository contains a University of Waterloo Directed Reading Program
+This repository contains a University of Waterloo Directed Research Program
 project by Jake Edmonstone and Matthew Tchouikine, mentored by Paul Cusson.
 
 The project begins with a question about repeatedly differentiating a smooth
