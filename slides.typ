@@ -204,7 +204,7 @@ controlled by the _single_ number $M(0)$:
 $
        f^((k))(x) & = sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n, \
   abs(f^((k))(x)) & <= sum_(n=0)^oo M(0)/(n!) abs(x)^n
-                    = M(0) exp(abs(x)).
+                    = M(0) e(abs(x)).
 $
 
 Note that for all $n in NN$ and $x in [a,b]$,
@@ -229,9 +229,9 @@ $
     f^((n))(b)-f^((n))(a)
     = integral_a^b f^((n+1))(x) dif x
   $
-  On $[a,b]$, we have
+  For $x in [a,b]$, we have
   $
-    f^((n+1))(x) -> g(x)
+    lim_(n->oo) f^((n+1))(x) = g(x)
     quad "and" quad
     abs(f^((n+1))(x)) <= C_([a,b]).
   $
@@ -256,7 +256,10 @@ $
 )[
   Using the locally uniform bound from before, we show that $g$ is continuous,
   $
-         g(b)-g(a) & = integral_a^b g(x) dif x, \
+    g(b)-g(a) & = integral_a^b g(x) dif x, \
+  $
+  Therefore,
+  $
     abs(g(b)-g(a)) & <= integral_a^b abs(g(x)) dif x \
                    & <= C_([a,b]) (b-a).
   $
@@ -282,13 +285,11 @@ $
     g'(x)=g(x).
   $
 
-  #align(center)[
-    Thus $g$ is smooth, and solving the ODE gives
-    $
-      g(x)=C e^x
-    $
-    for some $C in RR$.
-  ]
+  Thus $g$ is smooth, and solving the ODE gives
+  $
+    g(x)=C e^x
+  $
+  for some $C in RR$.
 ]
 
 == The operator $L f=a f'$
