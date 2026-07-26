@@ -183,7 +183,7 @@ $
   $
   For $x in [a,b]$, we have
   $
-    lim_(n->oo) f^((n+1))(x) = g(x)
+    lim_(n -> oo) f^((n+1))(x) = g(x)
     quad "and" quad
     abs(f^((n+1))(x)) <= C_([a,b]).
   $
@@ -232,12 +232,12 @@ $
   $
   Since $g$ is continuous, the Fundamental Theorem of Calculus yields
   $
-    g'(x)=g(x).
+    g'(x) = g(x).
   $
 
-  Thus $L_1 g=g$, so $g$ is smooth. Solving the ODE gives
+  Thus $L_1 g = g$, so $g$ is smooth. Solving the ODE gives
   $
-    g(x)=C e^x
+    g(x) = C e^x
   $
   for some $C in RR$.
 ]

@@ -1,7 +1,7 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
 
-== $L_3 f:=a f'+f$
+== $L_3 f := a f' + f$
 
 #new-section-slide(level: 2)[]
 
@@ -9,7 +9,7 @@
 
 // Record the stronger conclusion for this special case.
 
-== $L_4 f:=a f'+b f$
+== $L_4 f := a f' + b f$
 
 #new-section-slide(level: 2)[]
 

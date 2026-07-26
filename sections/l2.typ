@@ -3,7 +3,7 @@
 
 = Extensions
 
-== $L_2 f:=a f'$
+== $L_2 f := a f'$
 
 #new-section-slide(level: 2)[]
 
@@ -23,13 +23,13 @@
   $
   Suppose that the pointwise limit
   $
-    g(x):=lim_(n->oo) L_2^n f(x)
+    g(x) := lim_(n -> oo) L_2^n f(x)
   $
   exists for every $x in RR$.
 
   We will show that
   $
-    L_2 g=g.
+    L_2 g = g.
   $
 ]
 
@@ -45,20 +45,20 @@
 )[
   Introduce the new coordinate
   $
-    Phi:RR ->RR, x mapsto integral_0^x 1/(a(t)) dif t.
+    Phi: RR -> RR, x mapsto integral_0^x 1/(a(t)) dif t.
   $
   Since $a$ is nowhere zero, $Phi$ is a diffeomorphism from $RR$ onto an open interval
-  $I:=Phi(RR)$. Set
+  $I := Phi(RR)$. Set
   $
-    F:=f compose Phi^(-1):I->RR.
+    F := f compose Phi^(-1): I -> RR.
   $
   The chain rule gives
   $
-    F'=(L_2 f) compose Phi^(-1),
+    F' = (L_2 f) compose Phi^(-1),
   $
-  and therefore, for every $n>=0$,
+  and therefore, for every $n >= 0$,
   $
-    F^((n))=(L_2^n f) compose Phi^(-1).
+    F^((n)) = (L_2^n f) compose Phi^(-1).
   $
 ]
 
@@ -74,13 +74,13 @@
 )[
   Note that
   $
-    lim_(n->oo) F^((n))(y) & = lim_(n->oo) (L_2^n f)(Phi^(-1)(y)) \
+    lim_(n -> oo) F^((n))(y) & = lim_(n -> oo) (L_2^n f)(Phi^(-1)(y)) \
                            & = g(Phi^(-1)(y))
   $
-  exists. So, we can define $ G(y):=lim_(n->oo) F^((n))(y). $
+  exists. So, we can define $G(y) := lim_(n -> oo) F^((n))(y)$.
   The ordinary derivative result on the interval $I$ gives
   $
-    G'=G.
+    G' = G.
   $
 ]
 
@@ -94,16 +94,16 @@
     body
   },
 )[
-  Since $G= g compose Phi^(-1)$, then $g=G compose Phi$. Since $Phi'=1/a$ (by FTC), then
+  Since $G = g compose Phi^(-1)$, then $g = G compose Phi$. Since $Phi' = 1/a$ (by FTC), then
   $
-    g' & =(G' compose Phi) dot Phi' \
-       & =(G compose Phi) dot 1/a \
-       & =g dot 1/a.
+    g' & = (G' compose Phi) dot Phi' \
+       & = (G compose Phi) dot 1/a \
+       & = g dot 1/a.
   $
   Hence
   $
-    L_2 g & =a g' \
-          & =a (g dot 1/a) \
-          & =g.
+    L_2 g & = a g' \
+          & = a (g dot 1/a) \
+          & = g.
   $
 ]
