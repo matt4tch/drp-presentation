@@ -17,7 +17,7 @@
 )[
   Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
 
-  *1. Change coordinates.* For $sigma in {-1,1}$, set
+  *Change coordinates.* For $sigma in {-1,1}$, set
   $
     Phi_sigma (x) := log(sigma x),
     quad
@@ -25,15 +25,15 @@
   $
   $
     F_sigma^((n))
-      = (L_5^n f) compose Phi_sigma^(-1).
+    = (L_5^n f) compose Phi_sigma^(-1).
   $
   The ordinary derivative result makes $F_sigma$ entire.
 
-  *2. Remove the affine part.* If $a:=f(0)$ and $b:=f'(0)$, define
+  *Remove the affine part.* If $a:=f(0)$ and $b:=f'(0)$, define
   $
     H_sigma (y) := F_sigma (y) - a - b Phi_sigma^(-1) (y).
   $
 
-  *3. Apply Phragmén–Lindelöf.* It forces $H_sigma=0$. Hence
+  *Apply Phragmén–Lindelöf.* It forces $H_sigma=0$. Hence
   $f(x)=a+b x$ on $RR$, so $g(x)=b x$ and $L_5 g=g$.
 ]
