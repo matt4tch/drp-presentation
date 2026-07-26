@@ -7,4 +7,33 @@
 
 === A simple zero
 
-// State the affine rigidity result.
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 2em, x: 1.8em)),
+  setting: body => {
+    set text(size: 24pt)
+    set block(spacing: 0.7em)
+    body
+  },
+)[
+  Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
+
+  *1. Change coordinates.* For $sigma in {-1,1}$, set
+  $
+    Phi_sigma (x) := log(sigma x),
+    quad
+    F_sigma := f compose Phi_sigma^(-1).
+  $
+  $
+    F_sigma^((n))
+      = (L_5^n f) compose Phi_sigma^(-1).
+  $
+  The ordinary derivative result makes $F_sigma$ entire.
+
+  *2. Remove the affine part.* If $a:=f(0)$ and $b:=f'(0)$, define
+  $
+    H_sigma (y) := F_sigma (y) - a - b Phi_sigma^(-1) (y).
+  $
+
+  *3. Apply Phragmén–Lindelöf.* It forces $H_sigma=0$. Hence
+  $f(x)=a+b x$ on $RR$, so $g(x)=b x$ and $L_5 g=g$.
+]
