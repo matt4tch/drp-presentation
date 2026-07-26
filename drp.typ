@@ -903,37 +903,3 @@ Combining the two inclusions gives
 $
   B = A + C
 $
-
-
-------------
-
-$
-  f(x) = f(0) + f'(0)x + h_1 (x)x
-$
-
-$
-  lim_(x->0) h_1 (x) =0.
-$
-
-$
-       x (dif f)/(dif x) & = f'(0)x + x(h_1 ' (x)x +h_1 (x)) \
-                         & = f'(0) x + h_1 (x) x + h_1 ' (x) x^2 \
-                         & = f(x) - f(0) + h_1 ' (x) x^2 \
-  x (dif (x f'))/(dif x) & = x f' (x) + x(h_1 '' (x) x^2 + h_1 ' (x) 2x) \
-                         & = f(x) - f(0) + 3 x^2 h_1 '(x) + x^3 h_1 '' (x)
-$
-
-Inductively define
-$
-  h_n (x) = h_n (0) + h_n ' (0) x + h_(n+1) (x) x,\
-  lim_(x -> 0) h_n (x) =0.
-$
-
-$
-  h_n (x) = h_n (0) + x (h_n ' (0) + h_(n+1)(0)) + x^2 (h_(n+1) ' (0) + h_(n+2) (x))
-$
-
-$
-  h_1 (x) = h_1 (0) + sum_(k=1)^(N) (h_(k) ' (0) + h_(k+1) (0))x^k + h_(N+1) ' (0)x^(N+1) + h_(N+2) (x) x^(N+1)
-$
-
