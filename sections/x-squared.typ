@@ -1,7 +1,7 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
 
-== $L_6 f := x^2 f'$
+== $L_5 f := x^2 f'$
 
 #new-section-slide(level: 2)[]
 
@@ -16,10 +16,10 @@
     pad(top: 0.6em, body)
   },
 )[
-  Suppose $g(x) := lim_(n -> oo) L_6^n f(x)$ exists pointwise.
+  Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
 
   *Change coordinates.* On each half-line, $Phi(x) := -1/x$ turns
-  $L_6$ into ordinary differentiation, so
+  $L_5$ into ordinary differentiation, so
   $
     g(x) = C_+ e^(-1/x) quad (x > 0),
     quad
@@ -27,7 +27,7 @@
   $
 
   *At the origin.* As $x -> 0^-$, $e^(-1/x) -> oo$, so smoothness forces
-  $C_- = 0$. Also, $(L_6 h)(0) = 0$ for every smooth $h$, hence $g(0) = 0$.
+  $C_- = 0$. Also, $(L_5 h)(0) = 0$ for every smooth $h$, hence $g(0) = 0$.
 
   *Conclusion.*
   $
@@ -36,5 +36,5 @@
       0 & x <= 0,
     )
   $
-  The right-hand term vanishes at $0$. Therefore $g in C^oo (RR)$ and $L_6 g = g$.
+  The right-hand term vanishes at $0$. Therefore $g in C^oo (RR)$ and $L_5 g = g$.
 ]
