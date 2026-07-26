@@ -18,7 +18,7 @@
 )[
   The guiding question is:
   $
-    L^n f -> g " pointwise" quad ==> quad g in C^oo " and " L g = g?
+    L^n f -> g "pointwise" quad ==> quad g in C^oo (RR) "and" L g = g?
   $
 
   *1. Higher-order ODEs.* Study
