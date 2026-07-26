@@ -1,24 +1,239 @@
-#strong[Problem.]
-Let $d = dif/(dif x)$, and let $f in C^oo (RR)$. Suppose that for every $x in RR$, the limit
-$
-  g(x) := lim_(n -> oo) d^n f(x) = lim_(n -> oo) f^((n))(x)
-$
-exists. We want to show that $g$ is differentiable, and in fact satisfies $g'=g$.
+#import "@preview/thmbox:0.3.0": *
 
-#strong[Theorem 1.]
-Let $f in C^oo (RR)$. Define
-$
-  M(x):=sup{abs(f^((k))(x)) mid(|) k>=0}
-$
-and assume that for each $x in RR$, $M(x)<oo$. Then $f$ is real analytic with infinite radius of convergence. \
-#strong[Proof:]
-Suppose this is not the case. Let $X$ denote the set of real numbers $x$ for which there does not exist any entire function that agrees with $f$ on a neighbourhood of $x$. If $X=emptyset$, then every point has a neighbourhood on which $f$ agrees with some entire function. These entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $f$ on all of $RR$, contradicting our assumption. Therefore $X$ is non-empty. \
-*Claim:* $X$ is closed.\
-*Proof:* Let $(x_n) subset.eq X$. Suppose $x_n -> x in.not X$. Then there exists a neighbourhood $U subset.eq RR$ of $x$, such that there exists an entire $g$ that agrees with $f$ on $U$. But $x_n->x$, so $x_N in U$ for some $N in NN$. But $U$ is a neighbourhood of $x_N$, on which entire function $g$ agrees with $f$, yet $x_N in X$, so such a neighbourhood cannot exist. Therefore, $x in X$, so $X$ is closed. $square$
+// Document formatting
+#let main-font = "Libertinus Serif"
 
-Now define $S_n:={x in RR | M(x) <= n}$. Then,
+#let preamble(doc) = {
+  show link: text.with(fill: blue)
+  set page(margin: (x: 1.5cm), numbering: "1")
+  set text(14pt, font: main-font)
+  set heading(numbering: "1.")
+  show math.equation.where(block: false): box
+  show figure.where(kind: "stareq"): it => grid(
+    columns: (1fr, auto),
+    column-gutter: 1em,
+    align: (center + horizon, horizon),
+    block(width: 100%)[#align(center, it.body)],
+    context it.counter.display(it.numbering),
+  )
+  doc
+}
+
+#let notes-title(title) = {
+  align(center, text(24pt, weight: "bold", title))
+  v(1em)
+}
+
+// Numbered theorem environments
+#let setup-shared-counters(level) = doc => {
+  show: thmbox-init(counter-level: level)
+  doc
+}
+
+#let problem = thmbox.with(
+  color: colors.blue,
+  variant: [Problem],
+  fill: rgb("#eef7ff"),
+  numbering: none,
+  title-fonts: (main-font,),
+)
+
+#let thm = thmbox.with(
+  color: colors.dark-red,
+  variant: [Theorem],
+  fill: rgb("#fdf1f2"),
+  title-fonts: (main-font,),
+)
+
+#let prop = thmbox.with(
+  color: colors.light-blue,
+  variant: [Proposition],
+  fill: rgb("#f4f6fd"),
+  title-fonts: (main-font,),
+)
+
+#let lemma = thmbox.with(
+  color: colors.light-turquoise,
+  variant: [Lemma],
+  fill: rgb("#f0fbf8"),
+  title-fonts: (main-font,),
+)
+
+#let defn = thmbox.with(
+  color: colors.orange,
+  variant: [Definition],
+  fill: rgb("#fff4e6"),
+  title-fonts: (main-font,),
+)
+
+#let remark = thmbox.with(
+  color: colors.gray,
+  variant: [Remark],
+  fill: rgb("#f8f8f8"),
+  title-fonts: (main-font,),
+)
+
+// Proofs and claims
+#let qed() = {
+  h(1fr)
+  $square$
+}
+
+#let pf(body) = block[
+  #set text(style: "oblique", weight: "bold")
+  Proof:
+  #set text(style: "normal", weight: "regular")
+  #body
+  #qed()
+]
+
+#let claim(title, body) = {
+  let claim-title = [Claim #title]
+  show figure.where(kind: "claim"): set block(breakable: true)
+  figure(
+    kind: "claim",
+    supplement: "Claim",
+    numbering: (..numbers) => title,
+    caption: none,
+    outlined: false,
+  )[
+    #block(width: 100%)[
+      #align(left)[
+        #strong(underline[_#claim-title:_])
+        #body
+      ]
+    ]
+  ]
+}
+
+#let verifclaim(title, body) = {
+  let claim-title = [Verification of Claim #title]
+  show figure.where(kind: "claim"): set block(breakable: true)
+  figure(
+    kind: "claim",
+    supplement: "Verification of Claim",
+    numbering: (..numbers) => title,
+    caption: none,
+    outlined: false,
+  )[
+    #block(width: 100%)[
+      #align(left)[
+        #strong(underline[_#claim-title:_])
+        #body
+      ]
+    ]
+  ]
+}
+
+// Numbered display equations
+#let stareq(symbol: none, ..args) = {
+  let body = args.pos().first()
+  figure(
+    kind: "stareq",
+    supplement: none,
+    numbering: (..numbers) => [(#symbol)],
+    outlined: false,
+    body,
+  )
+}
+
+// Math shorthands used below
+#let nospace = $#h(0pt)$
+#let nosp = $nospace$
+#let st = $mid(|)$
+#let subs = $subset.eq$
+#let nin = $in.not$
+#let em = $emptyset$
+#let mapstoo = $mapsto.long$
+#let toinf(index) = $limits(stretch(arrow.r))_(#index -> oo)$
+
+#show: preamble
+#show: setup-shared-counters(2)
+
+#let project-header(doc) = {
+  set page(
+    margin: (top: 2.5cm, bottom: 2.5cm),
+    header-ascent: 25pt,
+    footer-descent: 25pt,
+    header: [
+      #smallcaps[Directed Research Program]
+      #h(1fr)
+      #smallcaps[J. Edmonstone and M. Tchouikine]
+      #block(spacing: .65em, line(length: 100%, stroke: 1pt))
+    ],
+    footer: context {
+      let found = query(selector(heading).before(here())).rev().find(
+        heading => heading.level <= 2,
+      )
+      if found != none { emph(found.body) }
+      h(1fr)
+      counter(page).display()
+    },
+  )
+  doc
+}
+
+#show: project-header
+
+#set document(
+  title: "Iteration of Linear Differential Operators",
+  author: ("Jake Edmonstone", "Matthew Tchouikine"),
+)
+
+#notes-title("Iteration of Linear Differential Operators")
+#align(center)[
+  #strong[Jake Edmonstone and Matthew Tchouikine] \
+  Mentor: Paul Cusson \
+  University of Waterloo Directed Research Program
+]
+
+#v(1em)
+#outline()
+#pagebreak()
+
+= Ordinary differentiation
+
+== The original problem
+
+#problem[Iteration of the derivative][
+  Let $d = dif / (dif x)$, and let $f in C^oo (RR)$. Suppose that, for every
+  $x in RR$, the limit
+  $
+    g(x) := lim_(n -> oo) d^n f(x)
+          = lim_(n -> oo) f^((n))(x)
+  $
+  exists. We want to show that $g$ is differentiable and, in fact, satisfies
+  $g'=g$.
+]
+
+== Analyticity from pointwise derivative bounds
+
+#thm[Analyticity theorem][
+  Let $f in C^oo (RR)$. Define
+  $
+    M(x):=sup{abs(f^((k))(x)) st k>=0},
+  $
+  and assume that $M(x)<oo$ for every $x in RR$. Then $f$ is the restriction
+  to $RR$ of an entire function.
+]<thm:analyticity>
+
+#pf[
+Suppose this is not the case. Let $X$ denote the set of real numbers $x$ for which there does not exist any entire function that agrees with $f$ on a neighbourhood of $x$. If $X=em$, then every point has a neighbourhood on which $f$ agrees with some entire function. These entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $f$ on all of $RR$, contradicting our assumption. Therefore $X$ is non-empty. \
+
+#claim[1][
+  The set $X$ is closed.
+]
+#verifclaim[1][
+  Let $(x_n) subs X$. Suppose $x_n -> x nin X$. Then there exists a
+  neighbourhood $U subs RR$ of $x$ and an entire function agreeing with
+  $f$ on $U$. Since $x_n->x$, we have $x_N in U$ for some $N in NN$. Thus $U$
+  is a neighbourhood of $x_N$ on which an entire function agrees with $f$,
+  contradicting $x_N in X$. Therefore $x in X$, so $X$ is closed.
+]
+
+Now define $S_n:={x in RR st M(x) <= n}$. Then,
 $
-  S_n & = {x in RR | f^((k)) (x) in [-n, n] space forall k >= 0} \
+  S_n & = {x in RR st f^((k)) (x) in [-n, n] space forall k >= 0} \
       & = inter.big_(k >= 0) ((dif^k f)/(dif x^k))^(-1) ([-n,n])
 $
 Hence each $S_n$ is closed. Also note that
@@ -27,25 +242,35 @@ So
 $
   X = union.big_(n in NN) (S_n inter X)
 $
-Since $X$ is closed in $RR$, it is complete in the induced metric. Since $X$ is also non-empty, then by BCT, we have that there exists an $N in NN$ with $S_N inter X$ having non-empty interior relative to $X$. In other words, there exist $a,b in RR$ with $a < b$ such that
+Since $X$ is closed in $RR$, it is complete in the induced metric. Since $X$ is also non-empty, BCT implies that there exists an $N in NN$ with $S_N inter X$ having non-empty interior relative to $X$. In other words, there exist $a,b in RR$ with $a < b$ such that
 $
-  emptyset != (a,b) inter X subset.eq S_N inter X
+  em != (a,b) inter X subs S_N inter X
 $
 
-If $(a,b) \\ X=emptyset$, then $(a,b) subset.eq X subset.eq S_N$. Hence
+If $(a,b) \\ X=em$, then $(a,b) subs X subs S_N$. Hence
 $
   abs(f^((m))(x)) <= N
 $
-for all $x in (a,b)$ and all $m >= 0$. The Taylor argument below then shows that every $x_0 in (a,b)$ has a neighbourhood on which $f$ agrees with an entire function, contradicting $(a,b) subset.eq X$. Thus $(a,b) \\ X$ is non-empty.
+for all $x in (a,b)$ and all $m >= 0$. The Taylor argument below then shows that every $x_0 in (a,b)$ has a neighbourhood on which $f$ agrees with an entire function, contradicting $(a,b) subs X$. Thus $(a,b) \\ X$ is non-empty.
 
-Now let $(c,e)$ be a maximal interval in the open set $(a,b) \\ X$. Since $(c,e) subset.eq (a,b) \\ X$, for every $x in (c,e)$ there is some neighbourhood of $x$ on which $f$ agrees with an entire function. By analytic continuation, these entire functions agree on overlaps, and hence $f$ agrees with a single entire function $F$ on all of $(c,e)$.
+Now let $(c,e)$ be a maximal interval in the open set $(a,b) \\ X$. Since $(c,e) subs (a,b) \\ X$, for every $x in (c,e)$ there is some neighbourhood of $x$ on which $f$ agrees with an entire function. By analytic continuation, these entire functions agree on overlaps, and hence $f$ agrees with a single entire function $F$ on all of $(c,e)$.
 
-*Claim:* At least one endpoint of $(c,e)$ lies in $(a,b) inter X$.\
-*Proof:* Suppose first that $c in (a,b)$. If $c in.not X$, then $c in (a,b) \\ X$. But $(a,b) \\ X$ is open, so there exists a neighbourhood of $c$ contained in $(a,b) \\ X$. This would allow us to extend $(c,e)$ to the left, contradicting the maximality of $(c,e)$. Hence, if $c in (a,b)$, then $c in X$. Similarly, if $e in (a,b)$, then $e in X$.
+#claim[2][
+  At least one endpoint of $(c,e)$ lies in $(a,b) inter X$.
+]
+#verifclaim[2][
+  Suppose first that $c in (a,b)$. If $c nin X$, then
+  $c in (a,b) without X$. Since $(a,b) without X$ is open, some neighbourhood
+  of $c$ is contained in $(a,b) without X$. This would extend $(c,e)$ to the
+  left, contradicting maximality. Hence, if $c in (a,b)$, then $c in X$.
+  Similarly, if $e in (a,b)$, then $e in X$.
 
-Now if neither endpoint of $(c,e)$ lies in $(a,b)$, then $(c,e)=(a,b)$. But this is impossible, since $(a,b) inter X != emptyset$. Therefore at least one endpoint of $(c,e)$ lies in $(a,b) inter X$. $square$
+  If neither endpoint lies in $(a,b)$, then $(c,e)=(a,b)$, contradicting
+  $(a,b) inter X != em$. Therefore at least one endpoint lies in
+  $(a,b) inter X$.
+]
 
-The argument below treats the case $c in (a,b) inter X$. If instead $e in (a,b) inter X$, the same argument works with $e$ in place of $c$, expanding around $e$ and using $x -> c^+$ at the end. Since $(a,b) inter X subset.eq S_N$, we have $c in S_N$, and so
+The argument below treats the case $c in (a,b) inter X$. If instead $e in (a,b) inter X$, the same argument works with $e$ in place of $c$, expanding around $e$ and using $x -> c^+$ at the end. Since $(a,b) inter X subs S_N$, we have $c in S_N$, and so
 $
   abs(f^((m))(c)) <= N
 $
@@ -87,7 +312,7 @@ $
 $
 for all $x in (a,b)$ and all $m >= 0$.
 
-We now show that $f$ is real analytic on $(a,b)$. Let $x_0 in (a,b)$, and choose $r > 0$ such that $(x_0-r,x_0+r) subset.eq (a,b)$. For $x in (x_0-r,x_0+r)$ and $K >= 0$, Taylor's theorem with remainder gives
+We now show that $f$ is real analytic on $(a,b)$. Let $x_0 in (a,b)$, and choose $r > 0$ such that $(x_0-r,x_0+r) subs (a,b)$. For $x in (x_0-r,x_0+r)$ and $K >= 0$, Taylor's theorem with remainder gives
 $
   f(x) = sum_(j=0)^K (f^((j))(x_0))/(j!) (x-x_0)^j + (f^((K+1))(xi))/((K+1)!) (x-x_0)^(K+1)
 $
@@ -103,75 +328,94 @@ $
   <= sum_(j=0)^oo (N exp(b-a))/(j!) abs(z-x_0)^j
   = N exp(b-a) exp(abs(z-x_0)) < oo
 $
-Thus the Taylor series at $x_0$ defines an entire function which agrees with $f$ on a neighbourhood of $x_0$. Hence $x_0 in.not X$. Since $x_0 in (a,b)$ was arbitrary, $(a,b) inter X = emptyset$. This contradicts $(a,b) inter X != emptyset$.
+Thus the Taylor series at $x_0$ defines an entire function which agrees with $f$ on a neighbourhood of $x_0$. Hence $x_0 nin X$. Since $x_0 in (a,b)$ was arbitrary, $(a,b) inter X = em$. This contradicts $(a,b) inter X != em$.
 
-Therefore our supposition was false, so $X=emptyset$. Hence every point has a neighbourhood on which $f$ agrees with an entire function. By analytic continuation, these local entire functions agree on overlaps and glue to a single entire function whose restriction to $RR$ is $f$. Therefore $f$ is real analytic with infinite radius of convergence.
+Therefore our supposition was false, so $X=em$. Hence every point has a neighbourhood on which $f$ agrees with an entire function. By analytic continuation, these local entire functions agree on overlaps and glue to a single entire function whose restriction to $RR$ is $f$. Therefore $f$ is real analytic with infinite radius of convergence.
+]
 
-$square$
 
+== Solution of the original problem
 
-#strong[Application to the problem.]
+#thm[Pointwise limits of iterated derivatives][
+  Let $f in C^oo (RR)$ and suppose that
+  $
+    g(x):=lim_(n->oo) f^((n))(x)
+  $
+  exists for every $x in RR$. Then $g in C^oo (RR)$ and $g'=g$.
+]<thm:ordinary-derivative-limit>
+
+#pf[
 Assume that $f in C^oo (RR)$ and that
 $
   g(x) := lim_(n -> oo) f^((n))(x)
 $
-exists for every $x in RR$. Then for each fixed $x$, the sequence $(f^((n))(x))_(n >= 0)$ is convergent, hence bounded. Therefore the hypotheses of Theorem 1 are satisfied, so $f$ is the restriction of an entire function.
+exists for every $x in RR$. Then for each fixed $x$, the sequence
+$(f^((n))(x))nosp_(n>=0)$ is convergent, hence bounded. Therefore the
+hypotheses of @thm:analyticity are satisfied, so $f$ is the restriction of an
+entire function.
 
 Indeed, for each $x in RR$, set
 $
   M(x) := sup_(n >= 0) abs(f^((n))(x)).
 $
-This quantity is finite because $(f^((n))(x))_(n >= 0)$ converges.
+This quantity is finite because $(f^((n))(x))nosp_(n>=0)$ converges.
 
 For all $k>=0$ and $x in RR$ we have
-$
-  abs(f^((k))(x)) & = abs(sum_(n=0)^oo (f^((n+k))(0))/n!x^n) \
-                  & <= sum_(n=0)^oo abs((f^((n+k))(0))/n!x^n) \
-                  & = sum_(n=0)^oo abs(f^((n+k))(0))/n!abs(x)^n \
-                  & <= sum_(n=0)^oo M(0)/n!abs(x)^n \
-                  & = M(0)e^abs(x) space (2)
-$
+#stareq(symbol: "1.1")[
+  $
+    abs(f^((k))(x)) & = abs(sum_(n=0)^oo (f^((n+k))(0))/(n!) x^n) \
+                    & <= sum_(n=0)^oo abs(f^((n+k))(0))/(n!) abs(x)^n \
+                    & <= sum_(n=0)^oo M(0)/(n!) abs(x)^n \
+                    & = M(0) exp(abs(x)).
+  $
+]<eq:global-derivative-bound>
 
-Let $a,b in RR$. By Fundamental Theorem of Calculus, we have
-
-$
-  f^((n)) (a) - f^((n)) (b) = integral_b^a f^((n+1)) (x) dif x
-$
-Taking $n -> oo$, and by (2), we can apply Lebesgue's Dominated Convergence Theorem to obtain
+Let $a<b$. By the Fundamental Theorem of Calculus, we have
 
 $
-  g(a)-g(b) = integral_b^a g(x) dif x
+  f^((n)) (b) - f^((n)) (a) = integral_a^b f^((n+1)) (x) dif x.
+$
+By @eq:global-derivative-bound, we may apply Lebesgue's Dominated Convergence
+Theorem as $n -> oo$ to obtain
+
+$
+  g(b)-g(a) = integral_a^b g(x) dif x,
 $
 and hence
 $
-  abs(g(a)-g(b)) & = abs(integral_b^a g(x) dif x) \
-                 & <= integral_b^a abs(g(x)) dif x \
-                 & <= integral_b^a M(0) sup_(y in [a,b]) e^y dif x \
-                 & = M(0) sup_(y in [a,b]) e^y abs(a-b)
+  abs(g(b)-g(a)) & <= integral_a^b abs(g(x)) dif x \
+                 & <= M(0) exp(max(abs(a),abs(b))) (b-a).
 $
-And thus $g$ is (Lipschitz) continuous. Differentiating  with respect to $a$, and applying FTC,
+Thus $g$ is locally Lipschitz and, in particular, continuous. Fixing $a$ and
+differentiating with respect to $b$, the Fundamental Theorem of Calculus gives
 $
-  (dif g)/(dif a) (a) & = dif/(dif a) (g(b)) + dif/(dif a) integral_b^a g(x) dif x \
-                g'(a) & = 0 + g(a) \
-                      & = g(a)
+  g'(b) = g(b).
 $
 
-So, $g$ differentiable with $g=g'$. Since $g$ is continuous, $g'$ is also continuous, and thus this same argument can be applied inductively to obtain that $g$ is smooth.
+Therefore $g'=g$. Since $g$ is continuous, this identity can be differentiated
+inductively to conclude that $g$ is smooth.
+]
 
-#strong[Local form of the ordinary derivative result.]
-We will use the same result on open intervals. If $I subset.eq RR$ is a non-empty open interval, $F in C^oo (I)$, and $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$, then $F$ is the restriction to $I$ of an entire function. Moreover, the pointwise limit $G$ satisfies
-$
-  G'=G
-$
-on $I$.
+#lemma[Local form of the ordinary derivative result][
+  Let $I subs RR$ be a non-empty open interval and let $F in C^oo (I)$.
+  If $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$, then $F$ is the
+  restriction to $I$ of an entire function. Moreover, the pointwise limit
+  $G$ satisfies $G'=G$ on $I$.
+]<lem:local-derivative-limit>
 
-To see this, apply the Baire argument and Taylor estimate from Theorem 1 on compact subintervals of $I$. Thus every point of $I$ has a neighbourhood on which $F$ agrees with an entire function. These local entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $F$ on all of $I$. The dominated-convergence step is then applied on an arbitrary compact interval $[a,b] subset.eq I$, giving
+#pf[
+To see this, apply the Baire argument and Taylor estimate from @thm:analyticity on compact subintervals of $I$. Thus every point of $I$ has a neighbourhood on which $F$ agrees with an entire function. These local entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $F$ on all of $I$. The dominated-convergence step is then applied on an arbitrary compact interval $[a,b] subs I$, giving
 $
   G(a)-G(b)=integral_b^a G(x) dif x.
 $
 Since $[a,b]$ was arbitrary, $G'=G$ on all of $I$.
+]
 
-#strong[Extension 1.]
+= First-order linear differential operators
+
+== The operator $L f=a f'$
+
+#thm[Nowhere-vanishing leading coefficient][
 Let $a in C^oo (RR)$ be nowhere zero, and define the operator
 $
   L f := a f'
@@ -188,15 +432,16 @@ or equivalently,
 $
   a g' = g.
 $
+]<thm:af-prime>
 
-#strong[Solution to Extension 1.]
+#pf[
 Define
 $
   Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t.
 $
 Since $a$ is nowhere zero, it has constant sign. Thus $Phi'(x)=1/a(x)$ is nowhere zero, so $Phi$ is a smooth diffeomorphism from $RR$ onto the open interval
 $
-  I := Phi(RR) subset.eq RR.
+  I := Phi(RR) subs RR.
 $
 Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism. Define
 $
@@ -252,8 +497,11 @@ $
   a g' = g,
 $
 or equivalently, $L g=g$.
+]
 
-#strong[Extension 2]
+== The operator $L f=a f'+f$
+
+#thm[The case $b=1$][
 Let $a in C^oo (RR)$ be nowhere zero, and define the operator
 $
   L f := a f' + f
@@ -266,15 +514,17 @@ exists. We want to show that $g$ is differentiable, and in fact satisfies
 $
   L g = g
 $
+Moreover, $g$ is constant.
+]<thm:af-prime-plus-f>
 
-#strong[Solution to Extension 2]
+#pf[
 Define
 $
   Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t,
 $
 and let
 $
-  I := Phi(RR) subset.eq RR
+  I := Phi(RR) subs RR
 $
 As before, $Phi$ is a smooth diffeomorphism from $RR$ onto $I$. Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism.
 Define
@@ -339,8 +589,11 @@ $
 and therefore $L g=g$.
 
 It is worth noting that in this case the conclusion is stronger than just $L g=g$: since $a$ is nowhere zero, the equation $a g' + g = g$ forces $g'=0$. Thus convergence under this operator forces the limiting function $g$ to be constant.
+]
 
-#strong[Extension 3]
+== The general operator $L f=a f'+b f$
+
+#thm[General nondegenerate first-order operators][
 Let $a,b in C^oo (RR)$, with $a$ nowhere zero, and define the operator
 $
   L f := a f' + b f
@@ -357,17 +610,18 @@ or equivalently,
 $
   a g' + b g = g
 $
+]<thm:first-order-nondegenerate>
 
-#strong[Solution to Extension 3]
+#pf[
 Define
 $
   Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t,
 $
 and let
 $
-  I := Phi(RR) subset.eq RR
+  I := Phi(RR) subs RR
 $
-As before, $Phi$ is a smooth diffeomorphism from $RR$ onto $I$. Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism Fix $y_0 in I$, and define
+As before, $Phi$ is a smooth diffeomorphism from $RR$ onto $I$. Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism. Fix $y_0 in I$, and define
 $
   W: I -> RR, quad W(y) := exp(integral_(y_0)^y b(Phi^(-1)(s)) dif s)
 $
@@ -422,7 +676,7 @@ Since $G'=G=W(g compose Phi^(-1))$, we get
 $
   (g compose Phi^(-1))' + (b compose Phi^(-1)) (g compose Phi^(-1)) = g compose Phi^(-1)
 $
-Now compose this identity with $Phi$ Since $g=(g compose Phi^(-1)) compose Phi$, the chain rule gives
+Now compose this identity with $Phi$. Since $g=(g compose Phi^(-1)) compose Phi$, the chain rule gives
 $
   g' = ((g compose Phi^(-1))' compose Phi) Phi' = ((g compose Phi^(-1))' compose Phi) / a
 $
@@ -430,11 +684,11 @@ Thus
 $
   ((g compose Phi^(-1))' compose Phi) = a g'
 $
-Also, $((b compose Phi^(-1)) compose Phi)=b$ and $((g compose Phi^(-1)) compose Phi)=g$ Therefore composing with $Phi$ gives
+Also, $((b compose Phi^(-1)) compose Phi)=b$ and $((g compose Phi^(-1)) compose Phi)=g$. Therefore composing with $Phi$ gives
 $
   a g' + b g = g
 $
-Therefore $L g=g$
+Therefore $L g=g$.
 
 This also gives an explicit description of the possible limits. Indeed,
 $
@@ -449,33 +703,43 @@ $
   g(x) = C exp(integral_(x_0)^x (1-b(t))/(a(t)) dif t)
 $
 This recovers the previous cases: if $b=0$, then $g$ is a scalar multiple of $exp(integral (1/a))$, while if $b=1$, then $g$ is constant.
+]
 
-#strong[Degenerate example 1]
-Now consider the operator
-$
-  L f := x f'
-$
-This is the simplest example where the coefficient of $f'$ vanishes, so the previous change of variables cannot be applied globally.
+= Degenerate leading coefficients
 
-Suppose that $f in C^oo (RR)$ and that for every $x in RR$, the limit
-$
-  g(x) := lim_(n -> oo) L^n f(x)
-$
-exists.
+== A simple zero: $L f=x f'$
 
-We will use the following form of the Phragmen-Lindelof uniqueness theorem.
+#thm[Iteration of $x dif/(dif x)$][
+  Let $L f:=x f'$ and let $f in C^oo (RR)$. Suppose that
+  $
+    g(x):=lim_(n->oo) L^n f(x)
+  $
+  exists for every $x in RR$. Then $f$ is affine. In particular, there are
+  $a,b in RR$ such that $f(x)=a+b x$ and $g(x)=b x$, so $g$ is smooth and
+  $L g=g$.
+]<thm:simple-zero>
 
-*Theorem.* Let $H: CC -> CC$ be entire. Suppose there are constants $C,A>0$, $tau>=0$, $alpha>tau$, and $T in RR$ such that
-$
-  abs(H(z)) <= C exp(tau abs(z))
-$
-for every $z in CC$, and
-$
-  abs(H(t)) <= A exp(alpha t)
-$
-for every real $t<=T$. Then $H=0$.
+#pf[
+This is the simplest example where the coefficient of $f'$ vanishes, so the
+previous change of variables cannot be applied globally. We use the following
+form of the Phragmén--Lindelöf uniqueness theorem.
 
-We will show that $f$ is affine. The proof has three steps: conjugate $L$ to the ordinary derivative on each half-line, control the growth of the resulting entire functions, and use their behaviour near $0$ to force them to be affine-exponential.
+#lemma[Phragmén--Lindelöf uniqueness][
+  Let $H: CC -> CC$ be entire. Suppose there are constants $C,A>0$,
+  $tau>=0$, $alpha>tau$, and $T in RR$ such that
+  $
+    abs(H(z)) <= C exp(tau abs(z))
+  $
+  for every $z in CC$, and
+  $
+    abs(H(t)) <= A exp(alpha t)
+  $
+  for every real $t<=T$. Then $H=0$.
+]<lem:pl-uniqueness>
+
+The proof has three steps: conjugate $L$ to the ordinary derivative on each
+half-line, control the growth of the resulting entire functions, and use their
+behaviour near $0$ to force them to be affine-exponential.
 
 Fix $sigma in {-1,1}$ and define
 $
@@ -496,11 +760,14 @@ Define
 $
   F_sigma := f compose Phi_sigma^(-1): RR --> RR.
 $
-*Claim 1:* For every $n>=0$,
-$
-  F_sigma^((n)) = (L^n f) compose Phi_sigma^(-1).
-$
-*Verification:* Since
+#claim[1][
+  For every $n>=0$,
+  $
+    F_sigma^((n)) = (L^n f) compose Phi_sigma^(-1).
+  $
+]
+#verifclaim[1][
+Since
 $
   (Phi_sigma^(-1))'=Phi_sigma^(-1),
 $
@@ -520,9 +787,10 @@ Applying the identity inductively,
 $
   F_sigma^((n)) = (L^n f) compose Phi_sigma^(-1)
 $
-for every $n>=0$. $square$
+for every $n>=0$.
+]
 
-By Claim 1, the original derivative result applies to $F_sigma$, so $F_sigma$ is the restriction of an entire function, which we continue to denote by $F_sigma$. Set
+By Claim 1, @thm:ordinary-derivative-limit applies to $F_sigma$, so $F_sigma$ is the restriction of an entire function, which we continue to denote by $F_sigma$. Set
 $
   a:=f(0), quad b:=f'(0),
 $
@@ -531,17 +799,20 @@ $
   H_sigma (z) := F_sigma (z)-a-sigma b exp(z).
 $
 
-*Claim 2:* There is a constant $C_sigma>0$ such that
-$
-  abs(H_sigma (z)) <= C_sigma exp(abs(z))
-$
-for every $z in CC$.
-
-*Verification:* Since $Phi_sigma^(-1) (0)=sigma$, we have
+#claim[2][
+  There is a constant $C_sigma>0$ such that
+  $
+    abs(H_sigma (z)) <= C_sigma exp(abs(z))
+  $
+  for every $z in CC$.
+]
+#verifclaim[2][
+Since $Phi_sigma^(-1) (0)=sigma$, we have
 $
   F_sigma^((n)) (0) = (L^n f)(sigma).
 $
-Thus the sequence $(F_sigma^((n)) (0))_(n=0)^oo$ converges and is therefore bounded. Choose $M_sigma>0$ such that
+Thus the sequence $(F_sigma^((n)) (0))nosp_(n=0)^oo$ converges and is
+therefore bounded. Choose $M_sigma>0$ such that
 $
   abs(F_sigma^((n)) (0)) <= M_sigma
 $
@@ -557,15 +828,17 @@ $
   <= (M_sigma+abs(a)+abs(b)) exp(abs(z)).
 $
 Thus we may take $C_sigma=M_sigma+abs(a)+abs(b)$.
-$square$
+]
 
-*Claim 3:* There are constants $K>0$ and $Y in RR$ such that
-$
-  abs(H_sigma (y)) <= K exp(2y)
-$
-for every real $y<=Y$.
-
-*Verification:* By Taylor's theorem, there are constants $delta,K>0$ such that
+#claim[3][
+  There are constants $K>0$ and $Y in RR$ such that
+  $
+    abs(H_sigma (y)) <= K exp(2y)
+  $
+  for every real $y<=Y$.
+]
+#verifclaim[3][
+By Taylor's theorem, there are constants $delta,K>0$ such that
 $
   abs(f(x)-a-b x) <= K x^2
 $
@@ -582,9 +855,10 @@ Since $Phi_sigma^(-1) (y)=sigma exp(y)$, this is exactly
 $
   abs(H_sigma (y)) <= K exp(2y)
 $
-for every real $y<=Y$. $square$
+for every real $y<=Y$.
+]
 
-Claims 2 and 3 verify the two growth hypotheses of the Phragmen-Lindelof uniqueness theorem with $tau=1$ and $alpha=2$. Therefore $H_sigma=0$, and hence
+Claims 2 and 3 verify the two growth hypotheses of @lem:pl-uniqueness with $tau=1$ and $alpha=2$. Therefore $H_sigma=0$, and hence
 $
   F_sigma (y)=a+b Phi_sigma^(-1) (y)
 $
@@ -616,35 +890,54 @@ In particular, $g$ is smooth and satisfies
 $
   L g = g.
 $
+]
 
-#strong[Degenerate example 2]
-Now consider the operator $L: C^oo (RR, RR) -> C^oo (RR, RR)$ defined by
-$       f & mapsto L f \
-L f (x) & = x^2 f'(x) quad forall x in RR. $ Note that $L$ is well-defined since $x mapsto x^2$ is smooth, and since $f'$ is smooth (since $f$ is smooth), so that $L f$ is smooth.
-As before, suppose that for every $x in RR$, the limit
-$
-  g(x) := lim_(n -> infinity) L^n f(x)
-$
-exists.
+== A second-order zero: $L f=x^2 f'$
 
+#thm[Iteration of $x^2 dif/(dif x)$][
+  Let $L f:=x^2 f'$ and let $f in C^oo (RR)$. Suppose that
+  $
+    g(x):=lim_(n->oo) L^n f(x)
+  $
+  exists for every $x in RR$. Then, for some $C in RR$,
+  $
+    g(x)=cases(
+      C exp(-1/x) & x>0,
+      0 & x<=0.
+    )
+  $
+  In particular, $g in C^oo (RR)$ and $L g=g$.
+]<thm:second-order-zero>
+
+#pf[
 Define
 $
-  Phi_+: (0,infinity) & -> bb(R) \
-                    x & mapsto -1 / x
+  Phi_+: (0,oo) & --> RR \
+                    x & mapstoo -1 / x
 $
 Note that $Phi_+$ is self-inverse, so $(Phi_+^(-1))'(x)= Phi_+ '(x)=1/x^2$ for all $x in (0,oo)$. Denote $F_+ = f compose Phi_+^(-1)$.
 
-*Lemma 1*: For all $n in NN$, $F_+^((n)) = (L^((n)) f) compose Phi_+^(-1)$.
+#lemma[Conjugacy on the positive half-line][
+  For all $n in NN$,
+  $
+    F_+^((n)) = (L^n f) compose Phi_+^(-1).
+  $
+]<lem:positive-half-line-conjugacy>
 
-*Proof of Lemma 1*: Applying the chain rule, we have $ F_+^' = (f compose phi_+^(-1))'=f' compose Phi_+^(-1) dot (Phi_+^(-1))' $
+#pf[
+Applying the chain rule, we have
+$
+  F_+ ' = (f compose Phi_+^(-1))'
+        = (f' compose Phi_+^(-1)) dot (Phi_+^(-1))'.
+$
 Therefore, for $y in (-oo,0)$, we have
 $
-  F_+^' (y) & = f'(Phi_+^(-1)(y)) (Phi_+^(-1))'(y) \
-            & =f'(-1/y) (1/y^2) \
-            & =f'(Phi_+^(-1) (y)) (Phi_+^(-1) (y))^2 \
-            & =(L f)(Phi_+^(-1)(y)).
+  F_+ ' (y) & = f'(Phi_+^(-1) (y)) (Phi_+^(-1))'(y) \
+              & = f'(-1/y) (1/y^2) \
+              & = f'(Phi_+^(-1) (y)) (Phi_+^(-1) (y))^2 \
+              & = (L f)(Phi_+^(-1) (y)).
 $
-So $F_+^'=(L f) compose Phi_+^(-1)$.
+So $F_+ '=(L f) compose Phi_+^(-1)$.
 
 We also have
 $
@@ -653,24 +946,27 @@ $
 $
 Therefore, for $y in (-oo,0)$, we have
 $
-  F_+^((2))(y) & = (L f)'(Phi_+^(-1)(y)) (Phi_+^(-1)(y))^2 \
-               & = L ((L f)(Phi_+^(-1)(y)) \
-               & = (L^2 f)(Phi_+^(-1)(y)).
+  F_+^((2))(y) & = (L f)'(Phi_+^(-1) (y)) (Phi_+^(-1) (y))^2 \
+               & = (L^2 f)(Phi_+^(-1) (y)).
 $
 
-So $F^((2))_+ = (L^((2)) f) compose Phi_+^(-1)$.
+So $F_+^((2)) = (L^2 f) compose Phi_+^(-1)$.
 
 Inductively,
 $
   F_+^((n)) = (L^n f) compose Phi_+^(-1)
 $
-which concludes the proof of *Lemma 1*. $qed$
+which concludes the proof.
+]
 
-Note that $F_+ in C^infinity ((-oo,0))$. Moreover, by Lemma 1 and the hypothesis on $L^((n)) f$, $lim_(n -> infinity) F_+^((n))(y)$ exists for every $y in (-oo,0)$, the *Local form of the ordinary derivative result* stated above applies directly to $F_+$. Thus, if
+Note that $F_+ in C^oo ((-oo,0))$. By
+@lem:positive-half-line-conjugacy and the hypothesis on $L^n f$, the limit
+$lim_(n -> oo) F_+^((n))(y)$ exists for every $y in (-oo,0)$. Thus
+@lem:local-derivative-limit applies directly to $F_+$. If
 $
-  G_+(y) := lim_(n -> infinity) F_+^((n))(y),
+  G_+(y) := lim_(n -> oo) F_+^((n))(y),
 $
-then $G_+^'=G_+$ on $(-oo,0)$, so
+then $G_+ '=G_+$ on $(-oo,0)$, so
 $
   G_+(y)=C_+ exp(y)
 $
@@ -681,25 +977,34 @@ $
 
 Now, define
 $
-  Phi_-: (-infinity,0) & -> bb(R) \
-                quad x & mapsto -1 / x
+  Phi_-: (-oo,0) & --> RR \
+                quad x & mapstoo -1 / x
 $
 and denote $F_- = f compose Phi_-^(-1)$.
 
-*Lemma 2*: For all $n in NN$, $F_-^((n)) = (L^n f) compose Phi_-^(-1)$
+#lemma[Conjugacy on the negative half-line][
+  For all $n in NN$,
+  $
+    F_-^((n)) = (L^n f) compose Phi_-^(-1).
+  $
+]<lem:negative-half-line-conjugacy>
 
-*Proof of Lemma 2*: Analogous to the proof of Lemma 1. $qed$
+#pf[
+  The proof is analogous to that of @lem:positive-half-line-conjugacy.
+]
 
-Analogously, the *local form of the ordinary derivative result* gives
+Analogously, @lem:local-derivative-limit gives
 $
-  G_-(y) := lim_(n -> infinity) F_-^((n))(y) = C_- exp(y)
+  G_-(y) := lim_(n -> oo) F_-^((n))(y) = C_- exp(y)
 $
 for some $C_- in RR$.
 
-*Lemma 3*: $C_-= 0$.
+#lemma[Vanishing on the negative half-line][
+  We have $C_-=0$.
+]<lem:negative-constant-zero>
 
-*Proof of Lemma 3*:
-First note that since $f$ is continuous at $0$ (since $f$ is smooth), then
+#pf[
+First note that $f$ is continuous at $0$ because it is smooth, so
 $
   lim_(y->oo) F_-(y)=lim_(y->oo) f(-1/y)= f(lim_(y->oo) -1/y) = f(0)
 $
@@ -709,59 +1014,66 @@ $
 $
 for every $y>=Y$.
 
-By the *local ordinary derivative result*, $F_-$ agrees on $(0,infinity)$ with the restriction of an entire function $tilde(F)_-$. Therefore, for every $y_0>0$, its Taylor series centered at $y_0$ has infinite radius of convergence. Set
+By @lem:local-derivative-limit, $F_-$ agrees on $(0,oo)$ with the restriction of an entire function $tilde(F)_-$. Therefore, for every $y_0>0$, its Taylor series centered at $y_0$ has infinite radius of convergence. Set
 $
   H(y) := F_-(y) - C_- exp(y)
 $
-on $(0,infinity)$. Since entire functions are closed under linear combinations, the function
+on $(0,oo)$. Since entire functions are closed under linear combinations, the function
 $
   tilde(H)(z) := tilde(F)_-(z) - C_- exp(z)
 $
-is entire. Moreover, for every $y in (0,infinity)$,
+is entire. Moreover, for every $y in (0,oo)$,
 $
   tilde(H)(y) = F_-(y) - C_- exp(y) = H(y).
 $
-Thus $H$ agrees on $(0,infinity)$ with the restriction of the entire function $tilde(H)$. Also, for every $y>0$,
+Thus $H$ agrees on $(0,oo)$ with the restriction of the entire function $tilde(H)$. Also, for every $y>0$,
 $
   H^((n))(y)
   = F_-^((n))(y) - C_- exp(y)
-  ->_(n->oo) 0
+  toinf(n) 0
 $
-because $F_-^((n))(y) ->_(n->oo) C_- exp(y)$.
+because $F_-^((n))(y) toinf(n) C_- exp(y)$.
 
 Fix $y_0>0$, and define
 $
   a_k := H^((k))(y_0).
 $
-For $r>0$, we have $ H(r)=sum_(k=0)^oo a_k/ k! (r-y_0)^k $
-so
+For $r>0$, the Taylor expansion at $y_0$ gives
 $
-  H(y_0+r)=sum_(k=0)^infinity a_k/(k!) r^k
+  H(y_0+r)=sum_(k=0)^oo a_k/(k!) r^k
 $
-since $y_0+r >0$
 and hence
 $
   exp(-r) H(y_0+r)
-  = sum_(k=0)^infinity a_k exp(-r) r^k / k!
+  = sum_(k=0)^oo a_k exp(-r) r^k / k!
 $
-We claim that the right hand side tends to $0$ as $r -> infinity$. Let $epsilon>0$. Since $a_k -> 0$, choose $K$ such that $abs(a_k)<epsilon/2$ for every $k>=K$. Then
+We claim that the right hand side tends to $0$ as $r -> oo$. Let $epsilon>0$. Since $a_k -> 0$, choose $K$ such that $abs(a_k)<epsilon/2$ for every $k>=K$. Then
+#stareq(symbol: "3.1")[
+  $
+    abs(exp(-r)H(y_0+r))
+    & <= sum_(k=0)^(K-1) abs(a_k) exp(-r) r^k/(k!) \
+    & quad + epsilon/2 sum_(k=K)^oo exp(-r) r^k/(k!).
+  $
+]<eq:split-exponential-series>
+However,
 $
-  abs(exp(-r)H(y_0+r)) & =abs(sum_(k=0)^infinity a_k exp(-r) r^k / k!) \
-  & <= sum_(k=0)^(K-1) abs(a_k) exp(-r) r^k/k! + epsilon/2 sum_(k=K)^infinity exp(-r) r^k/k! #strong[(1)]
+  sum_(k=0)^(K-1) abs(a_k) exp(-r) r^k/(k!)
+  toinf(r) 0
 $
-However, $ sum_(k=0)^(K-1) abs(a_k) exp(-r)r^k/k! =sum_(k=0)^(K-1) abs(a_k)/k! r^k/(exp(r)) ->_(r->oo) 0 quad #strong[(2)] $
 because $r^k in o(exp(r))$ for any $k in NN$. Note further that
 $
-  epsilon/2 sum_(k=K)^oo exp(-r) r^k/k! =epsilon/2 exp(-r) sum_(k=K)^oo r^k/k! <= epsilon/2 exp(-r) exp(r)=epsilon/2 #strong[(3)]
+  epsilon/2 sum_(k=K)^oo exp(-r) r^k/(k!)
+  <= epsilon/2 exp(-r) exp(r)
+  = epsilon/2
 $
 because $r^k/k! >= 0$ for all $r>=0$.
 
-Combining *(1)--(3)*, we have
+Combining these estimates with @eq:split-exponential-series, we have
 $
   abs(exp(-r)H(y_0+r))
-  <= sum_(k=0)^(K-1) abs(a_k) exp(-r) r^k/k! + epsilon.
+  <= sum_(k=0)^(K-1) abs(a_k) exp(-r) r^k/(k!) + epsilon.
 $
-By *(2)*, the finite sum is less than $epsilon/2$ for all sufficiently large $r$. Hence
+The finite sum is less than $epsilon/2$ for all sufficiently large $r$. Hence
 $
   abs(exp(-r)H(y_0+r)) < epsilon
 $
@@ -785,37 +1097,44 @@ $
                  & = C_- + exp(-y) H(y),
 $
 so
-$
-  lim_(y->oo) exp(-y) F_-(y) = C_- #strong[(4)]
-$
+#stareq(symbol: "3.2")[
+  $
+    lim_(y->oo) exp(-y) F_-(y) = C_-.
+  $
+]<eq:negative-limit-constant>
 However, by the choice of $Y$ and $M$, for every $y>=Y$ we have
 $
   abs(exp(-y)F_-(y)) <= exp(-y) abs(F_-(y)) <= M exp(-y).
 $
 Since $lim_(y->oo) M exp(-y) = 0$, the squeeze theorem gives
 $
-  lim_(y->oo) exp(-y) F_-(y) = 0 #strong[(5)]
+  lim_(y->oo) exp(-y) F_-(y) = 0.
 $
-Therefore, by *(4)* and *(5)*, we have $C_-=0$.
-$qed$
+Therefore, by @eq:negative-limit-constant, we have $C_-=0$.
+]
 
-*Lemma 4 (Smooth gluing lemma).* Let $h in C^infinity ((0,oo))$ and suppose that
-$
-  lim_(x->0^+) h^((n))(x)=0
-$
-for every $n>=0$. Then the extension
-$
-  tilde(h)(x)=
-  cases(
-    h(x)\, & x>0,
-    0\, & x<=0
-  )
-$
-belongs to $C^infinity (RR)$.
+#lemma[Smooth gluing lemma][
+  Let $h in C^oo ((0,oo))$ and suppose that
+  $
+    lim_(x->0^+) h^((n))(x)=0
+  $
+  for every $n>=0$. Then the extension
+  $
+    tilde(h)(x)=cases(
+      h(x) & x>0,
+      0 & x<=0
+    )
+  $
+  belongs to $C^oo (RR)$.
+]<lem:smooth-gluing>
 
-*Proof of Lemma 4*: See #link("https://ems.press/content/serial-article-files/51546")[Francis, Lemma 6.2], which proves the more general extension-by-zero principle in $RR^d$. $qed$
+#pf[
+  See #link("https://ems.press/content/serial-article-files/51546")[
+    Francis, Lemma 6.2
+  ], which proves the more general extension-by-zero principle in $RR^d$.
+]
 
-Since $C_-=0$, then $G_-equiv 0$, yet $G_-=g compose Phi_-^(-1)$ with $Phi_-^(-1)(y)=-1/y != 0$ for any $y in (0,oo)$. Therefore, $g(x)=0$
+Since $C_-=0$, we have $G_-equiv 0$, yet $G_-=g compose Phi_-^(-1)$ with $Phi_-^(-1)(y)=-1/y != 0$ for any $y in (0,oo)$. Therefore, $g(x)=0$
 for $x<0$. Also, at $x=0$, we have $(L h)(0)=0$ for every smooth function $h$, so $g(0)=0$. Therefore any pointwise limit has the form
 $
   g(x)=
@@ -828,40 +1147,50 @@ Note that $g$ is clearly smooth on $RR^*$. On $(-oo,0]$, every derivative of $g$
 $
   P_n (1/x) exp(-1/x)=(P_n (1/x))/exp(1/x)
 $
-for some polynomial $P_n$, which tends to $0$ as $x -> 0^+$ because exponential growth dominates polynomial growth. Thus, by Lemma 4, $g$ is smooth at $0$, and therefore $g in C^infinity (RR)$, as desired.
+for some polynomial $P_n$, which tends to $0$ as $x -> 0^+$ because exponential growth dominates polynomial growth. Thus, by @lem:smooth-gluing, $g$ is smooth at $0$, and therefore $g in C^oo (RR)$, as desired.
 
-*Why $C_- != 0$ in general:*
+#remark[Why $C_+$ need not vanish][
 The constant $C_+$ need not be zero. On the negative half-line, $x->0^-$ corresponds to $y->oo$, where $F_-$ is bounded and $exp(-y)->0$, forcing $C_-=0$. On the positive half-line, $x->0^+$ corresponds instead to $y->-oo$, where $exp(-y)->oo$, so the same argument fails. Indeed, for any $C in RR$, the smooth function
 $
   f_C (x)=cases(C exp(-1/x)\, & x>0, 0\, & x<=0)
 $
 satisfies $L f_C=f_C$. Hence $L^n f_C=f_C$ for every $n$, showing that any value $C_+=C$ can occur.
+]
+]
 
 
-#strong[Three important spaces]
+= Structural decomposition
+
+== Three important spaces
+
+#defn[Transient, input, and fixed-point spaces][
 Let $L: C^oo (RR) -> C^oo (RR)$ be a linear differential operator, and define
 $
-  A := {h in C^oo (RR) mid(|) lim_(n -> oo) L^n h(x) = 0 "for every" x in RR}
+  A := {h in C^oo (RR) st lim_(n -> oo) L^n h(x) = 0 "for every" x in RR}
 $
 This is the transient space. Define
 $
-  B := {f in C^oo (RR) mid(|) lim_(n -> oo) L^n f(x) "exists for every" x in RR}
+  B := {f in C^oo (RR) st lim_(n -> oo) L^n f(x) "exists for every" x in RR}
 $
 This is the input space. Finally, define
 $
-  C := {g in C^oo (RR) mid(|) L g = g}
+  C := {g in C^oo (RR) st L g = g}
 $
 This is the fixed-point space.
+]<defn:three-spaces>
 
-The following decomposition holds once the main regularity property has been proved for the operator $L$: assume that for every $f in B$, the pointwise limit
-$
-  g(x) := lim_(n -> oo) L^n f(x)
-$
-belongs to $C^oo (RR)$ and satisfies $L g = g$. Under this hypothesis,
-$
-  B = A + C
-$
+#prop[Transient--fixed-point decomposition][
+  Assume that, for every $f in B$, the pointwise limit
+  $
+    g(x) := lim_(n -> oo) L^n f(x)
+  $
+  belongs to $C^oo (RR)$ and satisfies $L g = g$. Then
+  $
+    B = A + C.
+  $
+]<prop:transient-fixed-point-decomposition>
 
+#pf[
 First let $f in B$, and define
 $
   g(x) := lim_(n -> oo) L^n f(x)
@@ -881,7 +1210,7 @@ Thus $h in A$, and therefore
 $
   f = h + g in A + C
 $
-So $B subset.eq A + C$.
+So $B subs A + C$.
 
 Conversely, let $f in A + C$. Then there exist $h in A$ and $g in C$ such that
 $
@@ -896,10 +1225,11 @@ $
 $
 Therefore the limit $lim_(n -> oo) L^n f(x)$ exists for every $x in RR$, so $f in B$. Hence
 $
-  A + C subset.eq B
+  A + C subs B
 $
 
 Combining the two inclusions gives
 $
   B = A + C
 $
+]
