@@ -1,33 +1,33 @@
 #strong[Problem.]
-Let $d = upright(d)/(upright(d) x)$, and let $f in C^infinity (bb(R))$. Suppose that for every $x in bb(R)$, the limit
+Let $d = dif/(dif x)$, and let $f in C^oo (RR)$. Suppose that for every $x in RR$, the limit
 $
-  g(x) := lim_(n -> infinity) d^n f(x) = lim_(n -> infinity) f^((n))(x)
+  g(x) := lim_(n -> oo) d^n f(x) = lim_(n -> oo) f^((n))(x)
 $
 exists. We want to show that $g$ is differentiable, and in fact satisfies $g'=g$.
 
 #strong[Theorem 1.]
-Let $f in C^infinity (bb(R))$. Define
+Let $f in C^oo (RR)$. Define
 $
-  M(x):=sup{abs(f^((k))(x)) bar.v k>=0}
+  M(x):=sup{abs(f^((k))(x)) mid(|) k>=0}
 $
-and assume that for each $x in bb(R)$, $M(x)<infinity$. Then $f$ is real analytic with infinite radius of convergence. \
+and assume that for each $x in RR$, $M(x)<oo$. Then $f$ is real analytic with infinite radius of convergence. \
 #strong[Proof:]
-Suppose this is not the case. Let $X$ denote the set of real numbers $x$ for which there does not exist any entire function that agrees with $f$ on a neighbourhood of $x$. If $X=emptyset$, then every point has a neighbourhood on which $f$ agrees with some entire function. These entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $f$ on all of $bb(R)$, contradicting our assumption. Therefore $X$ is non-empty. \
+Suppose this is not the case. Let $X$ denote the set of real numbers $x$ for which there does not exist any entire function that agrees with $f$ on a neighbourhood of $x$. If $X=emptyset$, then every point has a neighbourhood on which $f$ agrees with some entire function. These entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $f$ on all of $RR$, contradicting our assumption. Therefore $X$ is non-empty. \
 *Claim:* $X$ is closed.\
-*Proof:* Let $(x_n) subset.eq X$. Suppose $x_n -> x in.not X$. Then there exists a neighbourhood $U subset.eq bb(R)$ of $x$, such that there exists an entire $g$ that agrees with $f$ on $U$. But $x_n->x$, so $x_N in U$ for some $N in bb(N)$. But $U$ is a neighbourhood of $x_N$, on which entire function $g$ agrees with $f$, yet $x_N in X$, so such a neighbourhood cannot exist. Therefore, $x in X$, so $X$ is closed. $square$
+*Proof:* Let $(x_n) subset.eq X$. Suppose $x_n -> x in.not X$. Then there exists a neighbourhood $U subset.eq RR$ of $x$, such that there exists an entire $g$ that agrees with $f$ on $U$. But $x_n->x$, so $x_N in U$ for some $N in NN$. But $U$ is a neighbourhood of $x_N$, on which entire function $g$ agrees with $f$, yet $x_N in X$, so such a neighbourhood cannot exist. Therefore, $x in X$, so $X$ is closed. $square$
 
-Now define $S_n:={x in bb(R) | M(x) <= n}$. Then,
+Now define $S_n:={x in RR | M(x) <= n}$. Then,
 $
-  S_n & = {x in bb(R) | f^((k)) (x) in [-n, n] space forall k >= 0} \
-      & = inter.big_(k >= 0) ((upright(d)^k f)/(upright(d) x^k))^(-1) ([-n,n])
+  S_n & = {x in RR | f^((k)) (x) in [-n, n] space forall k >= 0} \
+      & = inter.big_(k >= 0) ((dif^k f)/(dif x^k))^(-1) ([-n,n])
 $
 Hence each $S_n$ is closed. Also note that
-$ bb(R) = union.big_(n in bb(N)) S_n $
+$ RR = union.big_(n in NN) S_n $
 So
 $
-  X = union.big_(n in bb(N)) (S_n inter X)
+  X = union.big_(n in NN) (S_n inter X)
 $
-Since $X$ is closed in $bb(R)$, it is complete in the induced metric. Since $X$ is also non-empty, then by BCT, we have that there exists an $N in bb(N)$ with $S_N inter X$ having non-empty interior relative to $X$. In other words, there exist $a,b in bb(R)$ with $a < b$ such that
+Since $X$ is closed in $RR$, it is complete in the induced metric. Since $X$ is also non-empty, then by BCT, we have that there exists an $N in NN$ with $S_N inter X$ having non-empty interior relative to $X$. In other words, there exist $a,b in RR$ with $a < b$ such that
 $
   emptyset != (a,b) inter X subset.eq S_N inter X
 $
@@ -51,23 +51,23 @@ $
 $
 for all $m >= 0$.
 
-Since $F|_((c,e))=f|_((c,e))$ and both functions are $C^infinity$ there, we have $F^((r))|_((c,e))=f^((r))|_((c,e))$ for every $r >= 0$. Therefore, using continuity of $F^((r))$ and $f^((r))$,
+Since $F|_((c,e))=f|_((c,e))$ and both functions are $C^oo$ there, we have $F^((r))|_((c,e))=f^((r))|_((c,e))$ for every $r >= 0$. Therefore, using continuity of $F^((r))$ and $f^((r))$,
 $
   F^((r))(c) = lim_(x -> c^+) F^((r))(x) = lim_(x -> c^+) f^((r))(x) = f^((r))(c)
 $
 
 Now let $x in (c,e)$. Since $F$ is entire, Taylor expansion of $F^((m))$ around $c$ gives, for each $m >= 0$,
 $
-  f^((m))(x) = F^((m))(x) = sum_(j=0)^infinity (F^((m+j))(c))/(j!) (x-c)^j = sum_(j=0)^infinity (f^((m+j))(c))/(j!) (x-c)^j
+  f^((m))(x) = F^((m))(x) = sum_(j=0)^oo (F^((m+j))(c))/(j!) (x-c)^j = sum_(j=0)^oo (f^((m+j))(c))/(j!) (x-c)^j
 $
 Thus,
 $
-  abs(f^((m))(x)) & <= sum_(j=0)^infinity abs(f^((m+j))(c))/(j!) abs(x-c)^j \
-                  & <= sum_(j=0)^infinity N/(j!) abs(x-c)^j \
-                  & <= sum_(j=0)^infinity N/(j!) (b-a)^j \
+  abs(f^((m))(x)) & <= sum_(j=0)^oo abs(f^((m+j))(c))/(j!) abs(x-c)^j \
+                  & <= sum_(j=0)^oo N/(j!) abs(x-c)^j \
+                  & <= sum_(j=0)^oo N/(j!) (b-a)^j \
                   & = N exp(b-a)
 $
-for all $m >= 0$ and all $x in (c,e)$. Since $f in C^infinity (bb(R))$, each $f^((m))$ is continuous, so letting $x -> e^-$ gives
+for all $m >= 0$ and all $x in (c,e)$. Since $f in C^oo (RR)$, each $f^((m))$ is continuous, so letting $x -> e^-$ gives
 $
   abs(f^((m))(e)) <= N exp(b-a)
 $
@@ -95,71 +95,71 @@ for some $xi$ between $x$ and $x_0$. Therefore,
 $
   abs(f(x) - sum_(j=0)^K (f^((j))(x_0))/(j!) (x-x_0)^j) & <= (N exp(b-a))/((K+1)!) abs(x-x_0)^(K+1)
 $
-Letting $K -> infinity$, the right hand side goes to $0$. Hence $f$ agrees with its Taylor series on $(x_0-r,x_0+r)$. Since $x_0 in (a,b)$ was arbitrary, $f$ is real analytic on $(a,b)$.
+Letting $K -> oo$, the right hand side goes to $0$. Hence $f$ agrees with its Taylor series on $(x_0-r,x_0+r)$. Since $x_0 in (a,b)$ was arbitrary, $f$ is real analytic on $(a,b)$.
 
-Moreover, the same bound shows that this Taylor series has infinite radius of convergence. Indeed, for every $z in bb(C)$,
+Moreover, the same bound shows that this Taylor series has infinite radius of convergence. Indeed, for every $z in CC$,
 $
-  sum_(j=0)^infinity abs((f^((j))(x_0))/(j!) (z-x_0)^j)
-  <= sum_(j=0)^infinity (N exp(b-a))/(j!) abs(z-x_0)^j
-  = N exp(b-a) exp(abs(z-x_0)) < infinity
+  sum_(j=0)^oo abs((f^((j))(x_0))/(j!) (z-x_0)^j)
+  <= sum_(j=0)^oo (N exp(b-a))/(j!) abs(z-x_0)^j
+  = N exp(b-a) exp(abs(z-x_0)) < oo
 $
 Thus the Taylor series at $x_0$ defines an entire function which agrees with $f$ on a neighbourhood of $x_0$. Hence $x_0 in.not X$. Since $x_0 in (a,b)$ was arbitrary, $(a,b) inter X = emptyset$. This contradicts $(a,b) inter X != emptyset$.
 
-Therefore our supposition was false, so $X=emptyset$. Hence every point has a neighbourhood on which $f$ agrees with an entire function. By analytic continuation, these local entire functions agree on overlaps and glue to a single entire function whose restriction to $bb(R)$ is $f$. Therefore $f$ is real analytic with infinite radius of convergence.
+Therefore our supposition was false, so $X=emptyset$. Hence every point has a neighbourhood on which $f$ agrees with an entire function. By analytic continuation, these local entire functions agree on overlaps and glue to a single entire function whose restriction to $RR$ is $f$. Therefore $f$ is real analytic with infinite radius of convergence.
 
 $square$
 
 
 #strong[Application to the problem.]
-Assume that $f in C^infinity (bb(R))$ and that
+Assume that $f in C^oo (RR)$ and that
 $
-  g(x) := lim_(n -> infinity) f^((n))(x)
+  g(x) := lim_(n -> oo) f^((n))(x)
 $
-exists for every $x in bb(R)$. Then for each fixed $x$, the sequence $(f^((n))(x))_(n >= 0)$ is convergent, hence bounded. Therefore the hypotheses of Theorem 1 are satisfied, so $f$ is the restriction of an entire function.
+exists for every $x in RR$. Then for each fixed $x$, the sequence $(f^((n))(x))_(n >= 0)$ is convergent, hence bounded. Therefore the hypotheses of Theorem 1 are satisfied, so $f$ is the restriction of an entire function.
 
-Indeed, for each $x in bb(R)$, set
+Indeed, for each $x in RR$, set
 $
   M(x) := sup_(n >= 0) abs(f^((n))(x)).
 $
 This quantity is finite because $(f^((n))(x))_(n >= 0)$ converges.
 
-For all $k>=0$ and $x in bb(R)$ we have
+For all $k>=0$ and $x in RR$ we have
 $
-  abs(f^((k))(x)) & = abs(sum_(n=0)^infinity (f^((n+k))(0))/n!x^n) \
-                  & <= sum_(n=0)^infinity abs((f^((n+k))(0))/n!x^n) \
-                  & = sum_(n=0)^infinity abs(f^((n+k))(0))/n!abs(x)^n \
-                  & <= sum_(n=0)^infinity M(0)/n!abs(x)^n \
+  abs(f^((k))(x)) & = abs(sum_(n=0)^oo (f^((n+k))(0))/n!x^n) \
+                  & <= sum_(n=0)^oo abs((f^((n+k))(0))/n!x^n) \
+                  & = sum_(n=0)^oo abs(f^((n+k))(0))/n!abs(x)^n \
+                  & <= sum_(n=0)^oo M(0)/n!abs(x)^n \
                   & = M(0)e^abs(x) space (2)
 $
 
-Let $a,b in bb(R)$. By Fundamental Theorem of Calculus, we have
+Let $a,b in RR$. By Fundamental Theorem of Calculus, we have
 
 $
-  f^((n)) (a) - f^((n)) (b) = integral_b^a f^((n+1)) (x) upright(d) x
+  f^((n)) (a) - f^((n)) (b) = integral_b^a f^((n+1)) (x) dif x
 $
-Taking $n -> infinity$, and by (2), we can apply Lebesgue's Dominated Convergence Theorem to obtain
+Taking $n -> oo$, and by (2), we can apply Lebesgue's Dominated Convergence Theorem to obtain
 
 $
-  g(a)-g(b) = integral_b^a g(x) upright(d) x
+  g(a)-g(b) = integral_b^a g(x) dif x
 $
 and hence
 $
-  abs(g(a)-g(b)) & = abs(integral_b^a g(x) upright(d) x) \
-                 & <= integral_b^a abs(g(x)) upright(d) x \
-                 & <= integral_b^a M(0) sup_(y in [a,b]) e^y upright(d) x \
+  abs(g(a)-g(b)) & = abs(integral_b^a g(x) dif x) \
+                 & <= integral_b^a abs(g(x)) dif x \
+                 & <= integral_b^a M(0) sup_(y in [a,b]) e^y dif x \
                  & = M(0) sup_(y in [a,b]) e^y abs(a-b)
 $
 And thus $g$ is (Lipschitz) continuous. Differentiating  with respect to $a$, and applying FTC,
 $
-  (upright(d) g)/(upright(d) a) (a) & = upright(d)/(upright(d) a) (g(b)) + upright(d)/(upright(d) a) integral_b^a g(x) upright(d) x \
-  g'(a) & = 0 + g(a) \
-  & = g(a)
+  (dif g)/(dif a) (a) & = dif/(dif a) (g(b)) + dif/(dif a) integral_b^a g(x) dif x \
+                g'(a) & = 0 + g(a) \
+                      & = g(a)
 $
 
 So, $g$ differentiable with $g=g'$. Since $g$ is continuous, $g'$ is also continuous, and thus this same argument can be applied inductively to obtain that $g$ is smooth.
 
 #strong[Local form of the ordinary derivative result.]
-We will use the same result on open intervals. If $I subset.eq bb(R)$ is a non-empty open interval, $F in C^infinity (I)$, and $lim_(n -> infinity) F^((n))(y)$ exists for every $y in I$, then $F$ is the restriction to $I$ of an entire function. Moreover, the pointwise limit $G$ satisfies
+We will use the same result on open intervals. If $I subset.eq RR$ is a non-empty open interval, $F in C^oo (I)$, and $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$, then $F$ is the restriction to $I$ of an entire function. Moreover, the pointwise limit $G$ satisfies
 $
   G'=G
 $
@@ -167,18 +167,18 @@ on $I$.
 
 To see this, apply the Baire argument and Taylor estimate from Theorem 1 on compact subintervals of $I$. Thus every point of $I$ has a neighbourhood on which $F$ agrees with an entire function. These local entire functions agree on overlaps by analytic continuation, and hence glue to a single entire function agreeing with $F$ on all of $I$. The dominated-convergence step is then applied on an arbitrary compact interval $[a,b] subset.eq I$, giving
 $
-  G(a)-G(b)=integral_b^a G(x) upright(d) x.
+  G(a)-G(b)=integral_b^a G(x) dif x.
 $
 Since $[a,b]$ was arbitrary, $G'=G$ on all of $I$.
 
 #strong[Extension 1.]
-Let $a in C^infinity (bb(R))$ be nowhere zero, and define the operator
+Let $a in C^oo (RR)$ be nowhere zero, and define the operator
 $
   L f := a f'
 $
-on $C^infinity (bb(R))$. Suppose that for every $x in bb(R)$, the limit
+on $C^oo (RR)$. Suppose that for every $x in RR$, the limit
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
 exists. We want to show that $g$ is differentiable, and in fact satisfies
 $
@@ -192,15 +192,15 @@ $
 #strong[Solution to Extension 1.]
 Define
 $
-  Phi: bb(R) -> bb(R), quad Phi(x) := integral_0^x 1/(a(t)) upright(d) t.
+  Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t.
 $
-Since $a$ is nowhere zero, it has constant sign. Thus $Phi'(x)=1/a(x)$ is nowhere zero, so $Phi$ is a smooth diffeomorphism from $bb(R)$ onto the open interval
+Since $a$ is nowhere zero, it has constant sign. Thus $Phi'(x)=1/a(x)$ is nowhere zero, so $Phi$ is a smooth diffeomorphism from $RR$ onto the open interval
 $
-  I := Phi(bb(R)) subset.eq bb(R).
+  I := Phi(RR) subset.eq RR.
 $
-Let $Phi^(-1): I -> bb(R)$ denote the inverse diffeomorphism. Define
+Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism. Define
 $
-  F := f circle Phi^(-1) : I -> bb(R).
+  F := f compose Phi^(-1) : I -> RR.
 $
 Then, for $y in I$, the inverse derivative formula gives
 $
@@ -208,43 +208,43 @@ $
 $
 Hence, by the chain rule,
 $
-  F' & = (f' circle Phi^(-1)) (Phi^(-1))' \
-     & = (f' circle Phi^(-1)) (a circle Phi^(-1)) \
-     & = (L f) circle Phi^(-1).
+  F' & = (f' compose Phi^(-1)) (Phi^(-1))' \
+     & = (f' compose Phi^(-1)) (a compose Phi^(-1)) \
+     & = (L f) compose Phi^(-1).
 $
 Applying the same computation to $L f$ gives
 $
-  F'' & = ((L f)' circle Phi^(-1)) (Phi^(-1))' \
-      & = ((L f)' circle Phi^(-1)) (a circle Phi^(-1)) \
-      & = (L (L f)) circle Phi^(-1) \
-      & = (L^2 f) circle Phi^(-1).
+  F'' & = ((L f)' compose Phi^(-1)) (Phi^(-1))' \
+      & = ((L f)' compose Phi^(-1)) (a compose Phi^(-1)) \
+      & = (L (L f)) compose Phi^(-1) \
+      & = (L^2 f) compose Phi^(-1).
 $
 Applying the same identity inductively gives
 $
-  F^((n)) = (L^n f) circle Phi^(-1)
+  F^((n)) = (L^n f) compose Phi^(-1)
 $
 on $I$ for every $n >= 0$.
 
 Now define
 $
-  G: I -> bb(R), quad G(y) := lim_(n -> infinity) F^((n))(y).
+  G: I -> RR, quad G(y) := lim_(n -> oo) F^((n))(y).
 $
-This limit exists because for every $y in I$, we have $Phi^(-1)(y) in bb(R)$, and so
+This limit exists because for every $y in I$, we have $Phi^(-1)(y) in RR$, and so
 $
-  G(y) = lim_(n -> infinity) (L^n f)(Phi^(-1)(y)) = g(Phi^(-1)(y)).
+  G(y) = lim_(n -> oo) (L^n f)(Phi^(-1)(y)) = g(Phi^(-1)(y)).
 $
 Thus
 $
-  G = g circle Phi^(-1).
+  G = g compose Phi^(-1).
 $
-Now $F in C^infinity (I)$, and we have just shown that $lim_(n -> infinity) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> bb(R)$ gives
+Now $F in C^oo (I)$, and we have just shown that $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> RR$ gives
 $
   G'=G.
 $
-Since $G=g circle Phi^(-1)$, we also have $g=G circle Phi$. Therefore, for $x in bb(R)$,
+Since $G=g compose Phi^(-1)$, we also have $g=G compose Phi$. Therefore, for $x in RR$,
 $
-  g' & = (G' circle Phi) Phi' \
-     & = (G circle Phi) 1/a \
+  g' & = (G' compose Phi) Phi' \
+     & = (G compose Phi) 1/a \
      & = g/a.
 $
 Hence
@@ -254,13 +254,13 @@ $
 or equivalently, $L g=g$.
 
 #strong[Extension 2]
-Let $a in C^infinity (bb(R))$ be nowhere zero, and define the operator
+Let $a in C^oo (RR)$ be nowhere zero, and define the operator
 $
   L f := a f' + f
 $
-on $C^infinity (bb(R))$. Suppose that for every $x in bb(R)$, the limit
+on $C^oo (RR)$. Suppose that for every $x in RR$, the limit
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
 exists. We want to show that $g$ is differentiable, and in fact satisfies
 $
@@ -270,63 +270,63 @@ $
 #strong[Solution to Extension 2]
 Define
 $
-  Phi: bb(R) -> bb(R), quad Phi(x) := integral_0^x 1/(a(t)) upright(d) t,
+  Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t,
 $
 and let
 $
-  I := Phi(bb(R)) subset.eq bb(R)
+  I := Phi(RR) subset.eq RR
 $
-As before, $Phi$ is a smooth diffeomorphism from $bb(R)$ onto $I$. Let $Phi^(-1): I -> bb(R)$ denote the inverse diffeomorphism.
+As before, $Phi$ is a smooth diffeomorphism from $RR$ onto $I$. Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism.
 Define
 $
-  E: I -> bb(R), quad E(y) := exp(y)
+  E: I -> RR, quad E(y) := exp(y)
 $
 Then $E'=E$. Define the function
 $
-  F := E (f circle Phi^(-1)) : I -> bb(R)
+  F := E (f compose Phi^(-1)) : I -> RR
 $
 Then, using the same calculation as in the first extension,
 $
-  F' & = E' (f circle Phi^(-1)) + E ((a f') circle Phi^(-1)) \
-     & = E ((f+a f') circle Phi^(-1)) \
-     & = E ((L f) circle Phi^(-1))
+  F' & = E' (f compose Phi^(-1)) + E ((a f') compose Phi^(-1)) \
+     & = E ((f+a f') compose Phi^(-1)) \
+     & = E ((L f) compose Phi^(-1))
 $
 Applying the same computation to $L f$ gives
 $
-  F'' & = E' ((L f) circle Phi^(-1)) + E ((a (L f)') circle Phi^(-1)) \
-      & = E (((L f)+a (L f)') circle Phi^(-1)) \
-      & = E ((L (L f)) circle Phi^(-1)) \
-      & = E ((L^2 f) circle Phi^(-1))
+  F'' & = E' ((L f) compose Phi^(-1)) + E ((a (L f)') compose Phi^(-1)) \
+      & = E (((L f)+a (L f)') compose Phi^(-1)) \
+      & = E ((L (L f)) compose Phi^(-1)) \
+      & = E ((L^2 f) compose Phi^(-1))
 $
 Applying the same identity inductively gives
 $
-  F^((n)) = E ((L^n f) circle Phi^(-1))
+  F^((n)) = E ((L^n f) compose Phi^(-1))
 $
 on $I$ for every $n >= 0$.
 
 Now define
 $
-  G: I -> bb(R), quad G(y) := lim_(n -> infinity) F^((n))(y)
+  G: I -> RR, quad G(y) := lim_(n -> oo) F^((n))(y)
 $
 This limit exists because for every $y in I$,
 $
-  G(y) = E(y) lim_(n -> infinity) (L^n f)(Phi^(-1)(y)) = E(y) g(Phi^(-1)(y))
+  G(y) = E(y) lim_(n -> oo) (L^n f)(Phi^(-1)(y)) = E(y) g(Phi^(-1)(y))
 $
 Thus
 $
-  G = E (g circle Phi^(-1))
+  G = E (g compose Phi^(-1))
 $
-Now $F in C^infinity (I)$, and we have just shown that $lim_(n -> infinity) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> bb(R)$ gives
+Now $F in C^oo (I)$, and we have just shown that $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> RR$ gives
 $
   G'=G
 $
 Then
 $
-  G' = E' (g circle Phi^(-1)) + E (g circle Phi^(-1))' = E (g circle Phi^(-1)) + E (g circle Phi^(-1))'
+  G' = E' (g compose Phi^(-1)) + E (g compose Phi^(-1))' = E (g compose Phi^(-1)) + E (g compose Phi^(-1))'
 $
-Since $G'=G=E (g circle Phi^(-1))$, we get
+Since $G'=G=E (g compose Phi^(-1))$, we get
 $
-  (g circle Phi^(-1))'=0
+  (g compose Phi^(-1))'=0
 $
 Composing with $Phi$ gives
 $
@@ -341,13 +341,13 @@ and therefore $L g=g$.
 It is worth noting that in this case the conclusion is stronger than just $L g=g$: since $a$ is nowhere zero, the equation $a g' + g = g$ forces $g'=0$. Thus convergence under this operator forces the limiting function $g$ to be constant.
 
 #strong[Extension 3]
-Let $a,b in C^infinity (bb(R))$, with $a$ nowhere zero, and define the operator
+Let $a,b in C^oo (RR)$, with $a$ nowhere zero, and define the operator
 $
   L f := a f' + b f
 $
-on $C^infinity (bb(R))$. Suppose that for every $x in bb(R)$, the limit
+on $C^oo (RR)$. Suppose that for every $x in RR$, the limit
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
 exists. We want to show that $g$ is differentiable, and in fact satisfies
 $
@@ -361,76 +361,76 @@ $
 #strong[Solution to Extension 3]
 Define
 $
-  Phi: bb(R) -> bb(R), quad Phi(x) := integral_0^x 1/(a(t)) upright(d) t,
+  Phi: RR -> RR, quad Phi(x) := integral_0^x 1/(a(t)) dif t,
 $
 and let
 $
-  I := Phi(bb(R)) subset.eq bb(R)
+  I := Phi(RR) subset.eq RR
 $
-As before, $Phi$ is a smooth diffeomorphism from $bb(R)$ onto $I$. Let $Phi^(-1): I -> bb(R)$ denote the inverse diffeomorphism Fix $y_0 in I$, and define
+As before, $Phi$ is a smooth diffeomorphism from $RR$ onto $I$. Let $Phi^(-1): I -> RR$ denote the inverse diffeomorphism Fix $y_0 in I$, and define
 $
-  W: I -> bb(R), quad W(y) := exp(integral_(y_0)^y b(Phi^(-1)(s)) upright(d) s)
+  W: I -> RR, quad W(y) := exp(integral_(y_0)^y b(Phi^(-1)(s)) dif s)
 $
 Then by the Fundamental Theorem of Calculus,
 $
-  W' = W (b circle Phi^(-1))
+  W' = W (b compose Phi^(-1))
 $
 Define the function
 $
-  F := W (f circle Phi^(-1)) : I -> bb(R)
+  F := W (f compose Phi^(-1)) : I -> RR
 $
 Then, using the same calculation as in the first extension,
 $
-  F' & = W' (f circle Phi^(-1)) + W ((a f') circle Phi^(-1)) \
-     & = W ((b f) circle Phi^(-1)) + W ((a f') circle Phi^(-1)) \
-     & = W ((L f) circle Phi^(-1))
+  F' & = W' (f compose Phi^(-1)) + W ((a f') compose Phi^(-1)) \
+     & = W ((b f) compose Phi^(-1)) + W ((a f') compose Phi^(-1)) \
+     & = W ((L f) compose Phi^(-1))
 $
 Applying the same computation to $L f$ gives
 $
-  F'' & = W' ((L f) circle Phi^(-1)) + W ((a (L f)') circle Phi^(-1)) \
-      & = W ((b (L f)) circle Phi^(-1)) + W ((a (L f)') circle Phi^(-1)) \
-      & = W ((L (L f)) circle Phi^(-1)) \
-      & = W ((L^2 f) circle Phi^(-1))
+  F'' & = W' ((L f) compose Phi^(-1)) + W ((a (L f)') compose Phi^(-1)) \
+      & = W ((b (L f)) compose Phi^(-1)) + W ((a (L f)') compose Phi^(-1)) \
+      & = W ((L (L f)) compose Phi^(-1)) \
+      & = W ((L^2 f) compose Phi^(-1))
 $
 Applying the same identity inductively gives
 $
-  F^((n)) = W ((L^n f) circle Phi^(-1))
+  F^((n)) = W ((L^n f) compose Phi^(-1))
 $
 on $I$ for every $n >= 0$.
 
 Now define
 $
-  G: I -> bb(R), quad G(y) := lim_(n -> infinity) F^((n))(y)
+  G: I -> RR, quad G(y) := lim_(n -> oo) F^((n))(y)
 $
 This limit exists because for every $y in I$,
 $
-  G(y) = W(y) lim_(n -> infinity) (L^n f)(Phi^(-1)(y)) = W(y) g(Phi^(-1)(y))
+  G(y) = W(y) lim_(n -> oo) (L^n f)(Phi^(-1)(y)) = W(y) g(Phi^(-1)(y))
 $
 Thus
 $
-  G = W (g circle Phi^(-1))
+  G = W (g compose Phi^(-1))
 $
-Now $F in C^infinity (I)$, and we have just shown that $lim_(n -> infinity) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> bb(R)$ gives
+Now $F in C^oo (I)$, and we have just shown that $lim_(n -> oo) F^((n))(y)$ exists for every $y in I$. The proof of the original problem applies locally on any open interval, so applying it to $F: I -> RR$ gives
 $
   G'=G
 $
 Then
 $
-  G' = W' (g circle Phi^(-1)) + W (g circle Phi^(-1))' = W (b circle Phi^(-1)) (g circle Phi^(-1)) + W (g circle Phi^(-1))'
+  G' = W' (g compose Phi^(-1)) + W (g compose Phi^(-1))' = W (b compose Phi^(-1)) (g compose Phi^(-1)) + W (g compose Phi^(-1))'
 $
-Since $G'=G=W(g circle Phi^(-1))$, we get
+Since $G'=G=W(g compose Phi^(-1))$, we get
 $
-  (g circle Phi^(-1))' + (b circle Phi^(-1)) (g circle Phi^(-1)) = g circle Phi^(-1)
+  (g compose Phi^(-1))' + (b compose Phi^(-1)) (g compose Phi^(-1)) = g compose Phi^(-1)
 $
-Now compose this identity with $Phi$ Since $g=(g circle Phi^(-1)) circle Phi$, the chain rule gives
+Now compose this identity with $Phi$ Since $g=(g compose Phi^(-1)) compose Phi$, the chain rule gives
 $
-  g' = ((g circle Phi^(-1))' circle Phi) Phi' = ((g circle Phi^(-1))' circle Phi) / a
+  g' = ((g compose Phi^(-1))' compose Phi) Phi' = ((g compose Phi^(-1))' compose Phi) / a
 $
 Thus
 $
-  ((g circle Phi^(-1))' circle Phi) = a g'
+  ((g compose Phi^(-1))' compose Phi) = a g'
 $
-Also, $((b circle Phi^(-1)) circle Phi)=b$ and $((g circle Phi^(-1)) circle Phi)=g$ Therefore composing with $Phi$ gives
+Also, $((b compose Phi^(-1)) compose Phi)=b$ and $((g compose Phi^(-1)) compose Phi)=g$ Therefore composing with $Phi$ gives
 $
   a g' + b g = g
 $
@@ -446,189 +446,176 @@ $
 $
 Thus either $g=0$, or for some constant $C$,
 $
-  g(x) = C exp(integral_(x_0)^x (1-b(t))/(a(t)) upright(d) t)
+  g(x) = C exp(integral_(x_0)^x (1-b(t))/(a(t)) dif t)
 $
 This recovers the previous cases: if $b=0$, then $g$ is a scalar multiple of $exp(integral (1/a))$, while if $b=1$, then $g$ is constant.
 
-#strong[Degenerate example]
+#strong[Degenerate example 1]
 Now consider the operator
 $
   L f := x f'
 $
-This is the simplest example where the coefficient of $f'$ vanishes, so the previous change of variables cannot be applied globally. In this case, however, the argument is still rigid enough to determine the limit.
+This is the simplest example where the coefficient of $f'$ vanishes, so the previous change of variables cannot be applied globally.
 
-Suppose that for every $x in bb(R)$, the limit
+Suppose that $f in C^oo (RR)$ and that for every $x in RR$, the limit
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
 exists.
 
-We will use the following standard uniqueness lemma for entire functions with controlled exponential growth. An entire function $H:bb(C)->bb(C)$ is said to have exponential type at most $1$ if it grows no faster than $exp(abs(z))$, up to an arbitrarily small change in the exponent. More precisely, for every $epsilon>0$, there is a constant $C_epsilon$ such that
-$
-  abs(H(z)) <= C_epsilon exp((1+epsilon) abs(z))
-$
-for every $z in bb(C)$. In the arguments below, we will prove the stronger and more concrete estimate
-$
-  abs(H(z)) <= C exp(abs(z))
-$
-for a fixed constant $C$. This immediately implies exponential type at most $1$.
+We will use the following form of the Phragmen-Lindelof uniqueness theorem.
 
-*Lemma.* If $H$ is entire of exponential type at most $1$ and
+*Theorem.* Let $H: CC -> CC$ be entire. Suppose there are constants $C,A>0$, $tau>=0$, $alpha>tau$, and $T in RR$ such that
+$
+  abs(H(z)) <= C exp(tau abs(z))
+$
+for every $z in CC$, and
 $
   abs(H(t)) <= A exp(alpha t)
 $
-for some constants $A>0$, $alpha>1$, and $T in bb(R)$, and for every real $t<=T$, then $H=0$.
+for every real $t<=T$. Then $H=0$.
 
-Intuitively, the lemma says this: an entire function whose total complex-plane growth is no faster than $exp(abs(z))$ cannot decay along the negative real axis as fast as $exp(2t)$, $exp(3t)$, or any $exp(alpha t)$ with $alpha>1$, unless it is identically zero. We use this as a standard consequence of the Phragmen-Lindelof indicator theorem. In terms of the indicator $h_H (theta)$, the decay on the negative real axis gives $h_H (pi) <= -alpha$, while type at most $1$ gives $h_H (0)<=1$. For a non-zero entire function of exponential type, one has
-$
-  h_H (0)+h_H (pi)>=0,
-$
-which is impossible if $alpha>1$.
+We will show that $f$ is affine. The proof has three steps: conjugate $L$ to the ordinary derivative on each half-line, control the growth of the resulting entire functions, and use their behaviour near $0$ to force them to be affine-exponential.
 
-Now work on the positive half-line. Define
+Fix $sigma in {-1,1}$ and define
 $
-  Phi_+: (0,infinity) -> bb(R), quad Phi_+(x) := log x
+  I_sigma := cases(
+    (0,oo) & "if" sigma=1,
+    (-oo,0) & "if" sigma=-1,
+  )
 $
-Then $Phi_+^(-1)(y)=exp(y)$. Define
+and
 $
-  F_+ := f circle Phi_+^(-1) : bb(R) -> bb(R)
+  Phi_sigma: I_sigma --> RR, quad Phi_sigma (x) := log(sigma x).
 $
-For $y in bb(R)$,
+Then $Phi_sigma$ is a smooth diffeomorphism with inverse
 $
-  F_+ '(y) & = (f circle Phi_+^(-1))'(y) \
-           & = f'(Phi_+^(-1)(y)) (Phi_+^(-1))'(y) \
-           & = f'(exp(y)) exp(y) \
-           & = (L f)(exp(y))
+  Phi_sigma^(-1): RR --> I_sigma, quad Phi_sigma^(-1) (y)=sigma exp(y).
 $
-Thus
+Define
 $
-  F_+ ' = (L f) circle Phi_+^(-1),
+  F_sigma := f compose Phi_sigma^(-1): RR --> RR.
 $
-and inductively,
+*Claim 1:* For every $n>=0$,
 $
-  F_+^((n)) = (L^n f) circle Phi_+^(-1)
+  F_sigma^((n)) = (L^n f) compose Phi_sigma^(-1).
 $
-Therefore the original result applies to $F_+$. In particular, $F_+$ extends to an entire function. It also has exponential type at most $1$: since $F_+^((n))(0)$ converges as $n -> infinity$, there is an $M>0$ such that $abs(F_+^((n))(0))<=M$ for every $n>=0$. Hence its Taylor series at $0$ satisfies
+*Verification:* Since
 $
-  abs(F_+(z))
-  <= sum_(n=0)^infinity M/(n!) abs(z)^n
-  = M exp(abs(z)).
+  (Phi_sigma^(-1))'=Phi_sigma^(-1),
+$
+the chain rule gives
+$
+  F_sigma ' & = (f' compose Phi_sigma^(-1)) (Phi_sigma^(-1))' \
+            & = (f' compose Phi_sigma^(-1)) Phi_sigma^(-1) \
+            & = (L f) compose Phi_sigma^(-1).
+$
+Applying the same computation to $L f$ gives
+$
+  F_sigma '' & = ((L f)' compose Phi_sigma^(-1)) (Phi_sigma^(-1))' \
+             & = ((L f)' compose Phi_sigma^(-1)) Phi_sigma^(-1) \
+             & = (L^2 f) compose Phi_sigma^(-1).
+$
+Applying the identity inductively,
+$
+  F_sigma^((n)) = (L^n f) compose Phi_sigma^(-1)
+$
+for every $n>=0$. $square$
+
+By Claim 1, the original derivative result applies to $F_sigma$, so $F_sigma$ is the restriction of an entire function, which we continue to denote by $F_sigma$. Set
+$
+  a:=f(0), quad b:=f'(0),
+$
+and define the entire function
+$
+  H_sigma (z) := F_sigma (z)-a-sigma b exp(z).
 $
 
-The derivative-limit
+*Claim 2:* There is a constant $C_sigma>0$ such that
 $
-  G_+(y) := lim_(n -> infinity) F_+^((n))(y)
+  abs(H_sigma (z)) <= C_sigma exp(abs(z))
 $
-satisfies $G_+ '=G_+$. Hence $G_+(y)=C_+ exp(y)$ for some constant $C_+$. Since
-$
-  G_+ = g circle Phi_+^(-1),
-$
-we get
-$
-  g(x)=C_+ x
-$
-for $x>0$.
+for every $z in CC$.
 
-We now show that $f$ itself is affine on $(0,infinity)$. Since $f$ is smooth at $0$, there are constants
+*Verification:* Since $Phi_sigma^(-1) (0)=sigma$, we have
 $
-  a:=f(0), quad b:=f'(0)
+  F_sigma^((n)) (0) = (L^n f)(sigma).
 $
-such that the second-order Taylor remainder is bounded near $0$. Concretely, there are constants $delta>0$ and $K>0$ such that whenever $abs(x)<delta$,
+Thus the sequence $(F_sigma^((n)) (0))_(n=0)^oo$ converges and is therefore bounded. Choose $M_sigma>0$ such that
 $
-  abs(f(x)-a-b x) <= K x^2.
+  abs(F_sigma^((n)) (0)) <= M_sigma
 $
-Choose $Y<0$ so that $exp(y)<delta$ for every $y<=Y$. Then for $y<=Y$,
+for every $n>=0$. The Taylor series of $F_sigma$ at $0$ then gives, for every $z in CC$,
 $
-  abs(F_+(y)-a-b exp(y))
-  = abs(f(exp(y))-a-b exp(y))
-  <= K exp(2y).
+  abs(F_sigma (z))
+  <= sum_(n=0)^oo frac(M_sigma, n!) abs(z)^n
+  = M_sigma exp(abs(z)).
 $
-Set
+Since $abs(exp(z))<=exp(abs(z))$, it follows that
 $
-  H_+(y):=F_+(y)-a-b exp(y).
+  abs(H_sigma (z))
+  <= (M_sigma+abs(a)+abs(b)) exp(abs(z)).
 $
-Then $H_+$ is entire of exponential type at most $1$, and
+Thus we may take $C_sigma=M_sigma+abs(a)+abs(b)$.
+$square$
+
+*Claim 3:* There are constants $K>0$ and $Y in RR$ such that
 $
-  abs(H_+(y)) <= K exp(2y)
+  abs(H_sigma (y)) <= K exp(2y)
 $
-for every $y<=Y$. By the standard fact above, applied with $alpha=2$, $H_+=0$. Thus
+for every real $y<=Y$.
+
+*Verification:* By Taylor's theorem, there are constants $delta,K>0$ such that
 $
-  F_+(y)=a+b exp(y),
+  abs(f(x)-a-b x) <= K x^2
+$
+whenever $abs(x)<delta$. Choose $Y in RR$ such that $exp(Y)<delta$. If $y<=Y$, then
+$
+  abs(Phi_sigma^(-1) (y))=exp(y)<delta,
 $
 and hence
 $
-  f(x)=a+b x
-$
-for $x>0$.
-
-Similarly, on $(-infinity,0)$, define
-$
-  Phi_-: (-infinity,0) -> bb(R), quad Phi_-(x) := log(-x)
-$
-Then $Phi_-^(-1)(y)=-exp(y)$. Define
-$
-  F_- := f circle Phi_-^(-1) : bb(R) -> bb(R)
-$
-For $y in bb(R)$,
-$
-  F_- '(y) & = (f circle Phi_-^(-1))'(y) \
-           & = f'(Phi_-^(-1)(y)) (Phi_-^(-1))'(y) \
-           & = f'(-exp(y)) (-exp(y)) \
-           & = (L f)(-exp(y))
-$
-Thus
-$
-  F_-^((n)) = (L^n f) circle Phi_-^(-1)
-$
-for every $n>=0$. Again $F_-$ extends to an entire function of exponential type at most $1$ by the same Taylor-coefficient bound, and its derivative-limit has the form $C exp(y)$. Hence there is a constant $C_-$ such that
-$
-  g(x)=C_- x
-$
-for $x<0$.
-
-The same Taylor-remainder estimate at $0$ gives, for $y<=Y$,
-$
-  abs(F_-(y)-a+b exp(y))
-  = abs(f(-exp(y))-a+b exp(y))
+  abs(F_sigma (y)-a-b Phi_sigma^(-1) (y))
   <= K exp(2y).
 $
-Set
+Since $Phi_sigma^(-1) (y)=sigma exp(y)$, this is exactly
 $
-  H_-(y):=F_-(y)-a+b exp(y).
+  abs(H_sigma (y)) <= K exp(2y)
 $
-Then $H_-$ is entire of exponential type at most $1$, and
+for every real $y<=Y$. $square$
+
+Claims 2 and 3 verify the two growth hypotheses of the Phragmen-Lindelof uniqueness theorem with $tau=1$ and $alpha=2$. Therefore $H_sigma=0$, and hence
 $
-  abs(H_-(y)) <= K exp(2y)
+  F_sigma (y)=a+b Phi_sigma^(-1) (y)
 $
-for every $y<=Y$. The same indicator argument, again with $alpha=2$, gives $H_-=0$. Hence
-$
-  F_-(y)=a-b exp(y),
-$
-and since $x=-exp(y)$, this says
+for every $y in RR$. Composing this identity with $Phi_sigma$ gives
 $
   f(x)=a+b x
 $
-for $x<0$.
+for every $x in I_sigma$.
 
-Since $f(0)=a$, we have globally
+Since $sigma in {-1,1}$ was arbitrary, this identity holds on both half-lines. Since $f(0)=a$, we conclude that
 $
-  f(x)=a+b x.
+  f(x)=a+b x
 $
-Finally,
+for every $x in RR$.
+
+It follows that
 $
-  L f=x f'(x)=b x,
+  L f(x)=x f'(x)=b x
 $
-and therefore $L^n f=b x$ for every $n>=1$. Hence
+and
+$
+  L(b x)=b x.
+$
+Thus $L^n f(x)=b x$ for every $n>=1$, and consequently
 $
   g(x)=b x.
 $
-In particular the pointwise limit is smooth and satisfies
+In particular, $g$ is smooth and satisfies
 $
   L g = g.
 $
-
-The difference from the $x^2 D$ example below is that for $x D$, both sides of $0$ correspond to $y=log abs(x) -> -infinity$. Smoothness at $0$ therefore forces the same affine asymptotic on both sides. For $x^2 D$, one side corresponds instead to $y -> +infinity$, which allows a right-sided flat eigenfunction to survive.
-#pagebreak()
 
 #strong[Degenerate example 2]
 Now consider the operator $L: C^oo (RR, RR) -> C^oo (RR, RR)$ defined by
@@ -843,46 +830,47 @@ $
 $
 for some polynomial $P_n$, which tends to $0$ as $x -> 0^+$ because exponential growth dominates polynomial growth. Thus, by Lemma 4, $g$ is smooth at $0$, and therefore $g in C^infinity (RR)$, as desired.
 
+*Why $C_- != 0$ in general:*
 The constant $C_+$ need not be zero. On the negative half-line, $x->0^-$ corresponds to $y->oo$, where $F_-$ is bounded and $exp(-y)->0$, forcing $C_-=0$. On the positive half-line, $x->0^+$ corresponds instead to $y->-oo$, where $exp(-y)->oo$, so the same argument fails. Indeed, for any $C in RR$, the smooth function
 $
   f_C (x)=cases(C exp(-1/x)\, & x>0, 0\, & x<=0)
 $
 satisfies $L f_C=f_C$. Hence $L^n f_C=f_C$ for every $n$, showing that any value $C_+=C$ can occur.
 
-#pagebreak()
+
 #strong[Three important spaces]
-Let $L: C^infinity (bb(R)) -> C^infinity (bb(R))$ be a linear differential operator, and define
+Let $L: C^oo (RR) -> C^oo (RR)$ be a linear differential operator, and define
 $
-  A := {h in C^infinity (bb(R)) bar.v lim_(n -> infinity) L^n h(x) = 0 " for every " x in bb(R)}
+  A := {h in C^oo (RR) mid(|) lim_(n -> oo) L^n h(x) = 0 "for every" x in RR}
 $
 This is the transient space. Define
 $
-  B := {f in C^infinity (bb(R)) bar.v lim_(n -> infinity) L^n f(x) " exists for every " x in bb(R)}
+  B := {f in C^oo (RR) mid(|) lim_(n -> oo) L^n f(x) "exists for every" x in RR}
 $
 This is the input space. Finally, define
 $
-  C := {g in C^infinity (bb(R)) bar.v L g = g}
+  C := {g in C^oo (RR) mid(|) L g = g}
 $
 This is the fixed-point space.
 
 The following decomposition holds once the main regularity property has been proved for the operator $L$: assume that for every $f in B$, the pointwise limit
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
-belongs to $C^infinity (bb(R))$ and satisfies $L g = g$. Under this hypothesis,
+belongs to $C^oo (RR)$ and satisfies $L g = g$. Under this hypothesis,
 $
   B = A + C
 $
 
 First let $f in B$, and define
 $
-  g(x) := lim_(n -> infinity) L^n f(x)
+  g(x) := lim_(n -> oo) L^n f(x)
 $
 By the hypothesis, $g in C$. Let
 $
   h := f - g
 $
-Then $h in C^infinity (bb(R))$, and for every $x in bb(R)$,
+Then $h in C^oo (RR)$, and for every $x in RR$,
 $
   L^n h(x)
   = L^n f(x) - L^n g(x)
@@ -899,14 +887,14 @@ Conversely, let $f in A + C$. Then there exist $h in A$ and $g in C$ such that
 $
   f = h + g
 $
-Since $L g = g$, we have $L^n g = g$ for every $n >= 0$. Hence, for every $x in bb(R)$,
+Since $L g = g$, we have $L^n g = g$ for every $n >= 0$. Hence, for every $x in RR$,
 $
   L^n f(x)
   = L^n h(x) + L^n g(x)
   = L^n h(x) + g(x)
   -> g(x)
 $
-Therefore the limit $lim_(n -> infinity) L^n f(x)$ exists for every $x in bb(R)$, so $f in B$. Hence
+Therefore the limit $lim_(n -> oo) L^n f(x)$ exists for every $x in RR$, so $f in B$. Hence
 $
   A + C subset.eq B
 $
@@ -915,3 +903,37 @@ Combining the two inclusions gives
 $
   B = A + C
 $
+
+
+------------
+
+$
+  f(x) = f(0) + f'(0)x + h_1 (x)x
+$
+
+$
+  lim_(x->0) h_1 (x) =0.
+$
+
+$
+       x (dif f)/(dif x) & = f'(0)x + x(h_1 ' (x)x +h_1 (x)) \
+                         & = f'(0) x + h_1 (x) x + h_1 ' (x) x^2 \
+                         & = f(x) - f(0) + h_1 ' (x) x^2 \
+  x (dif (x f'))/(dif x) & = x f' (x) + x(h_1 '' (x) x^2 + h_1 ' (x) 2x) \
+                         & = f(x) - f(0) + 3 x^2 h_1 '(x) + x^3 h_1 '' (x)
+$
+
+Inductively define
+$
+  h_n (x) = h_n (0) + h_n ' (0) x + h_(n+1) (x) x,\
+  lim_(x -> 0) h_n (x) =0.
+$
+
+$
+  h_n (x) = h_n (0) + x (h_n ' (0) + h_(n+1)(0)) + x^2 (h_(n+1) ' (0) + h_(n+2) (x))
+$
+
+$
+  h_1 (x) = h_1 (0) + sum_(k=1)^(N) (h_(k) ' (0) + h_(k+1) (0))x^k + h_(N+1) ' (0)x^(N+1) + h_(N+2) (x) x^(N+1)
+$
+
