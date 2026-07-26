@@ -25,17 +25,14 @@
   $
     L f(x) = sum_(k=0)^m a_k (x) f^((k))(x), quad m >= 2.
   $
-  Which conditions on the coefficients recover local derivative bounds when
-  the first-order change of coordinates is unavailable?
+  What do we do when the first-order change of coordinates is unavailable?
 
-  *2. Partial differential operators.* For
+  *2. Partial differential operators.*
+  \ \
   $
     L f(x) = sum_(abs(alpha) <= m) a_alpha (x) partial^alpha f(x)
     quad "on" quad RR^d,
   $
-  Begin with constant-coefficient or elliptic operators. Can their regularity
-  theory justify passing the limit through $L$?
-
 ]
 
 #focus-slide[

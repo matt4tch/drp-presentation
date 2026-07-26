@@ -32,7 +32,7 @@
     quad (T f)(y) := w(y) f(Phi^(-1)(y)).
   $
 
-  The chain rule gives the conjugacy
+  The chain rule gives
   $
     T(L_3 f) = (T f)', quad
     T(L_3^n f) = (T f)^((n)).
