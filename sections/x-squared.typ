@@ -5,6 +5,36 @@
 
 #new-section-slide(level: 2)[]
 
-=== A double zero
+=== A second-order zero
 
-// State the one-sided flat limit.
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 22pt)
+    set block(spacing: 0.5em)
+    pad(top: 0.6em, body)
+  },
+)[
+  Suppose $g(x):=lim_(n->oo) L_6^n f(x)$ exists pointwise.
+
+  *Change coordinates.* On each half-line, $Phi(x):=-1/x$ turns
+  $L_6$ into ordinary differentiation, so
+  $
+    g(x)=C_+ e^(-1/x) quad (x>0),
+    quad
+    g(x)=C_- e^(-1/x) quad (x<0).
+  $
+
+  *At the origin.* As $x->0^-$, $e^(-1/x)->oo$, so smoothness forces
+  $C_-=0$. Also, $(L_6 h)(0)=0$ for every smooth $h$, hence $g(0)=0$.
+
+  *Conclusion.*
+  $
+    g(x)=cases(
+      C e^(-1/x) space & x>0,
+      0 & x<=0,
+    )
+  $
+  The right-hand term vanishes at $0$. Therefore $g in C^oo (RR)$ and $L_6 g=g$.
+]
