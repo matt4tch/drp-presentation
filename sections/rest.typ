@@ -3,9 +3,7 @@
 
 = Future directions
 
-== Open problems
-
-=== Beyond first-order ODEs
+== Open problems beyond first-order ODEs
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),

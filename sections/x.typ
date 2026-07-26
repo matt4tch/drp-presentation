@@ -15,7 +15,7 @@
     body
   },
 )[
-  Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
+  Suppose $g(x) := lim_(n -> oo) L_4^n f(x)$ exists pointwise.
 
   *Change coordinates.* For $sigma in {-1,1}$, set
   $
@@ -25,7 +25,7 @@
   $
   $
     F_sigma^((n))
-    = (L_5^n f) compose Phi_sigma^(-1).
+    = (L_4^n f) compose Phi_sigma^(-1).
   $
   The ordinary derivative result makes $F_sigma$ entire.
 
@@ -35,5 +35,5 @@
   $
 
   *Apply Phragmén–Lindelöf.* It forces $H_sigma=0$. Hence
-  $f(x)=a+b x$ on $RR$, so $g(x)=b x$ and $L_5 g=g$.
+  $f(x)=a+b x$ on $RR$, so $g(x)=b x$ and $L_4 g=g$.
 ]

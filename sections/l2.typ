@@ -7,7 +7,7 @@
 
 #new-section-slide(level: 2)[]
 
-=== The result
+=== The fixed-point equation
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
@@ -84,7 +84,7 @@
   $
 ]
 
-=== Pull back the ordinary result
+=== Recover the fixed-point equation
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
