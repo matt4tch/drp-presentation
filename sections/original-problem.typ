@@ -1,12 +1,5 @@
 #import "@preview/touying:0.7.4": *
-#import "../deck-style.typ": (
-  intro-border,
-  intro-paper,
-  nospace,
-  theme-primary,
-  theme-secondary,
-  thm,
-)
+#import "../deck-style.typ": intro-border, intro-paper, nospace, theme-primary, theme-secondary, thm
 
 = The original problem
 
@@ -163,7 +156,7 @@ $
 Note that for all $n in NN$ and $x in [a,b]$,
 
 $
-  abs(f^((n+1))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
+  abs(f^((n))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
 $
 
 == Pass the limit through the integral
