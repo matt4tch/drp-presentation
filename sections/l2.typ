@@ -43,11 +43,11 @@
     body
   },
 )[
-  Introduce the new coordinate
+  Introduce the change of coordinates map
   $
     Phi: RR -> RR, x mapsto integral_0^x 1/(a(t)) dif t.
   $
-  Since $a$ is nowhere zero, $Phi$ is a diffeomorphism from $RR$ onto an open interval
+  It can be verified that $Phi$ is a well-defined diffeomorphism from $RR$ onto an open interval
   $I := Phi(RR)$. Set
   $
     F := f compose Phi^(-1): I -> RR.
@@ -56,7 +56,7 @@
   $
     F' = (L_2 f) compose Phi^(-1),
   $
-  and therefore, for every $n >= 0$,
+  and by induction, for every $n >= 0$,
   $
     F^((n)) = (L_2^n f) compose Phi^(-1).
   $
