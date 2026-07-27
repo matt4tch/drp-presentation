@@ -176,9 +176,9 @@ $
   $
   Taking $n -> oo$ on both sides and applying LDCT to the right-hand side,
   $
-    g(b)-g(a) & = lim_(n -> oo) integral_a^b f^((n+1))(x) dif x \
-              & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
-              & = integral_a^b g(x) dif x.
+        && lim_(n->oo)(f^((n))(b)-f^((n))(a)) & = lim_(n -> oo) integral_a^b f^((n+1))(x) dif x \
+    ==> &&                    space g(b)-g(a) & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
+        &&                                    & = integral_a^b g(x) dif x.
   $
 ]
 
