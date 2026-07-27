@@ -198,26 +198,39 @@
     $
   ]<eq:global-derivative-bound>
 
-  Let $a<b$. By the Fundamental Theorem of Calculus, we have
-
+  Let $a<b$. For all $n in NN$ and $x in [a,b]$, we have
+  $
+    abs(f^((n)) (x))
+    <= C_([a,b]) := sup_(x in [a,b]) M(0) exp(abs(x)) < oo.
+  $
+  For every $n$, the Fundamental Theorem of Calculus gives
   $
     f^((n)) (b) - f^((n)) (a) = integral_a^b f^((n+1)) (x) dif x.
   $
-  By @eq:global-derivative-bound, we may apply Lebesgue's Dominated Convergence
-  Theorem as $n -> oo$ to obtain
-
+  Taking $n -> oo$ on both sides and applying Lebesgue's Dominated Convergence
+  Theorem to the right-hand side gives
   $
-    g(b)-g(a) = integral_a^b g(x) dif x,
+        && lim_(n -> oo) (f^((n)) (b)-f^((n)) (a))
+          & = lim_(n -> oo) integral_a^b f^((n+1)) (x) dif x \
+    ==> && g(b)-g(a)
+          & = integral_a^b lim_(n -> oo) f^((n+1)) (x) dif x \
+        && & = integral_a^b g(x) dif x.
   $
-  and hence
+  Since $g$ is the pointwise limit of the derivatives and
+  $abs(f^((n)) (x)) <= C_([a,b])$, we also have
+  $abs(g(x)) <= C_([a,b])$ on $[a,b]$. Therefore,
   $
     abs(g(b)-g(a)) & <= integral_a^b abs(g(x)) dif x \
-                   & <= M(0) exp(max(abs(a), abs(b))) (b-a).
+                   & <= C_([a,b]) abs(b-a).
   $
-  Thus $g$ is locally Lipschitz and, in particular, continuous. Fixing $a$ and
-  differentiating with respect to $b$, the Fundamental Theorem of Calculus gives
+  Thus $g$ is locally Lipschitz, and hence continuous. Fix $b$. The integral
+  identity can be written as
   $
-    g'(b) = g(b).
+    g(x) = g(b) + integral_b^x g(t) dif t.
+  $
+  Since $g$ is continuous, the Fundamental Theorem of Calculus gives
+  $
+    g'(x) = g(x).
   $
 
   Therefore $g'=g$. Since $g$ is continuous, this identity can be differentiated
