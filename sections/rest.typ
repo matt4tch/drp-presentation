@@ -10,7 +10,7 @@
   align: top,
   setting: body => {
     set text(size: 21pt)
-    set block(spacing: 0.45em)
+    set block(spacing: 1.3em)
     pad(top: 0.4em, body)
   },
 )[

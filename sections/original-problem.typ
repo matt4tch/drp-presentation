@@ -143,7 +143,7 @@ $
 so Tao's theorem applies immediately: $f$ is the restriction of an entire
 function.
 
-== One bound for every derivative
+== A locally uniform bound
 
 Since $f$ is the restriction of an entire function, expand $f^((k))$ at $0$. Every coefficient is
 controlled by the _single_ number $M(0)$:
@@ -159,13 +159,13 @@ $
   abs(f^((n))(x)) <= C_([a,b]) := sup_(x in [a,b]) M(0) e^(abs(x)) < oo.
 $
 
-== Pass the limit through the integral
+== Take the limit on both sides
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 23pt)
-    set block(spacing: 0.75em)
+    set block(spacing: 0.9em)
     body
   },
 )[
@@ -174,17 +174,11 @@ $
     f^((n))(b)-f^((n))(a)
     = integral_a^b f^((n+1))(x) dif x
   $
-  For $x in [a,b]$, we have
+  Taking $n -> oo$ on both sides and applying LDCT to the right-hand side,
   $
-    lim_(n -> oo) f^((n+1))(x) = g(x)
-    quad "and" quad
-    abs(f^((n+1))(x)) <= C_([a,b]).
-  $
-
-  Therefore, by Lebesgue's Dominated Convergence Theorem,
-  $
-    lim_(n -> oo) integral_a^b f^((n+1))(x) dif x & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
-                                                  & = integral_a^b g(x) dif x.
+    g(b)-g(a) & = lim_(n -> oo) integral_a^b f^((n+1))(x) dif x \
+              & = integral_a^b lim_(n -> oo) f^((n+1))(x) dif x \
+              & = integral_a^b g(x) dif x.
   $
 ]
 
@@ -194,19 +188,19 @@ $
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 26pt)
-    set block(spacing: 0.9em)
+    set block(spacing: 1.5em)
     body
   },
 )[
-  Using the locally uniform bound from before, we show that $g$ is continuous,
-  $
-    g(b)-g(a) & = integral_a^b g(x) dif x, \
-  $
-  Therefore,
+  Since $g$ is the pointwise limit of the derivatives and
+  $abs(f^((n))(x)) <= C_([a,b])$, we also have
+  $abs(g(x)) <= C_([a,b])$ on $[a,b]$. Therefore,
   $
     abs(g(b)-g(a)) & <= integral_a^b abs(g(x)) dif x \
-                   & <= C_([a,b]) (b-a).
+                   & <= C_([a,b]) abs(b-a).
   $
+
+  Thus $g$ is locally Lipschitz, and hence continuous.
 ]
 
 == The limit satisfies $L_1 g=g$

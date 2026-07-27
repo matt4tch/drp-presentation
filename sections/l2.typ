@@ -68,14 +68,14 @@
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
     set text(size: 24pt)
-    set block(spacing: 0.75em)
+    set block(spacing: 1.7em)
     body
   },
 )[
   Note that
   $
     lim_(n -> oo) F^((n))(y) & = lim_(n -> oo) (L_2^n f)(Phi^(-1)(y)) \
-                           & = g(Phi^(-1)(y))
+                             & = g(Phi^(-1)(y))
   $
   exists. So, we can define $G(y) := lim_(n -> oo) F^((n))(y)$.
   The ordinary derivative result on the interval $I$ gives

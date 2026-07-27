@@ -11,7 +11,7 @@
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.8em)),
   setting: body => {
     set text(size: 24pt)
-    set block(spacing: 0.7em)
+    set block(spacing: 0.9em)
     body
   },
 )[
