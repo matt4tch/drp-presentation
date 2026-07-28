@@ -134,7 +134,7 @@ exists.
 
 For each fixed $x in RR$, the sequence
 $
-  (f^((n))(x))nospace_(n>=0)
+  (f^((n))(x))nospace_(n=0)^oo
 $
 converges, hence is bounded. Therefore
 $
