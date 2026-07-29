@@ -1,0 +1,334 @@
+Iteration of linear differential
+
+                 operators
+
+Jake Edmonstone  Matthew Tchouikine
+
+                  Mentor: Paul Cusson
+University of Waterloo, Directed Research Program
+
+                           2026-07-29
+1. The original problem
+1.1 The original question                                                        1. The original problem
+
+Let   (), and write
+                                               d
+
+                                      1  d .
+Suppose that for every    the pointwise limit
+
+                               ()  lim 1 ()
+
+                                                           
+
+exists.
+Question. Must  be smooth? Moreover, can we prove 1 = ?
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  3 / 25
+                                A direct answer:
+
+The convergence hypothesis actually forces  to be a restriction
+                             of an entire function.
+1.2 Tao's analyticity theorem                                                    1. The original problem
+
+Theorem 1
+Let   (), and suppose that for every   ,
+
+                       ()  sup|()()| < .
+
+                                                0
+
+Then  is the restriction to  of an entire function. Equivalently,
+ is real analytic with infinite radius of convergence.
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  5 / 25
+1.3 Why Tao's theorem applies                                                    1. The original problem
+
+For each fixed   , the sequence
+                                    ( ()()) =0
+
+converges, hence is bounded. Therefore
+                            () = sup|()()| < ,
+
+                                                       0
+
+so Tao's theorem applies immediately:  is the restriction of an entire
+function.
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  6 / 25
+1.4 A locally uniform bound                                                      1. The original problem
+
+Since  is the restriction of an entire function, expand () at 0. Every
+
+coefficient is controlled by the single number  (0):
+
+                                               ()() =   (+)(0) ,
+                                                          =0 !
+
+                                      |()  ()|    (0) || =  (0)||.
+                                                          =0 !
+
+Note that for all    and   [, ],
+
+                                     | ()()|  [,]  sup  (0)|| < .
+
+                                                                          [,]
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  7 / 25
+1.5 Take the limit on both sides                                                       1. The original problem
+
+Fix  < . For every , the Fundamental Theorem of Calculus gives the identity
+
+                                                                             
+
+                                      ()() -  ()() =   (+1)() d
+
+                                                                           
+
+Taking    on both sides and applying LDCT to the right-hand side,
+
+                                                                                     
+
+                                     lim (()() - ()()) = lim  (+1)() d
+                                       
+                                                                                   
+
+                                         
+
+                                       () - () =  lim (+1)() d
+                                                                                   
+                                       
+
+                                               
+
+                                       =  () d.
+
+                                       
+
+Jake Edmonstone, Matthew Tchouikine    Iteration of linear differential operators      2026-07-29  8 / 25
+1.6 The limit is continuous                                                      1. The original problem
+
+Since  is the pointwise limit of the derivatives and |()()|  [,],
+we also have |()|  [,] on [, ]. Therefore,
+
+                                                                       
+
+                          |() - ()|   |()| d
+
+                                                                     
+
+                                            [,]| - |.
+
+Thus  is locally Lipschitz, and hence continuous.
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  9 / 25
+1.7 The limit satisfies 1 =                                                      1. The original problem
+
+Fix . The integral identity becomes
+
+                                                                      
+
+                            () = () +  () d.
+
+                                                                    
+
+Since  is continuous, the Fundamental Theorem of Calculus yields
+                                   () = ().
+
+Thus 1 = , so  is smooth. Solving the ODE gives
+                                    () = 
+
+for some   .
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  10 / 25
+2. Extensions
+2.1 2  
+2.1.1 The fixed-point equation                                                   2.1 2  
+
+Let   () be nowhere zero, and define
+                                    2  .
+
+Suppose that the pointwise limit
+                               ()  lim 2 ()
+
+                                                           
+
+exists for every   .
+
+We will show that
+
+                                     2 = .
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  13 / 25
+2.1.2 Change coordinates                                                             2.1 2  
+
+Introduce the change of coordinates map
+
+                                      :   ,   1                                  d.
+
+                                         0 ()
+
+It can be verified that  is a well-defined diffeomorphism from  onto an
+open interval   (). Set
+
+                                    -1 :   .
+
+The chain rule gives
+
+                                       = (2)  -1,
+
+and by induction, for every   0,
+                                  () = (2  )  -1.
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators      2026-07-29  14 / 25
+2.1.3 Pull back the ordinary result                                                2.1 2  
+
+   Note that the following limit exists:
+
+                                     lim  ()() = lim (2 )(-1())
+                                       
+
+                                       = (-1())
+
+So, we can define
+                                  ()  lim  ()().
+
+                                                                
+
+The ordinary derivative result on the interval  gives  = .
+
+Jake Edmonstone, Matthew Tchouikine    Iteration of linear differential operators  2026-07-29  15 / 25
+2.1.4 Recover the fixed-point equation                                                                       2.1 2  
+
+Since    =      -1,                  then    =      .  Since    =  1  (by                       FTC),  then
+                                                                   
+
+                                                     = (  )  
+
+                                                                      1
+                                                       = (  ) 
+
+                                                                      
+                                                              1
+                                                       = .
+                                                              
+
+Hence
+
+                                                       2 = 
+                                                                       1
+
+                                                            = (  )
+                                                                       
+
+                                                            = .
+
+Jake Edmonstone, Matthew Tchouikine                 Iteration of linear differential operators               2026-07-29  16 / 25
+2.2 3   + 
+2.2.1 Absorbing the zeroth-order term                                                     2.2 3   + 
+
+Let ,   (), with  nowhere zero, and suppose 3    pointwise on .
+
+As in the  case, set
+
+      ()                             1     d  (  ),    (),                                    -1 :   .
+
+                                     0 ()
+
+For   , define
+
+                                   
+
+      ()  exp( () d), ( )()  ()(-1()).
+
+                                 0
+
+The chain rule gives
+
+                                      (3) = ( ),  (3 ) = ( )().
+
+Thus
+
+                                              lim ( )() =  .
+
+                                              
+
+Jake Edmonstone, Matthew Tchouikine           Iteration of linear differential operators  2026-07-29    18 / 25
+2.2.1 Absorbing the zeroth-order term                                            2.2 3   + 
+
+The ordinary derivative result gives  (3) = ( ) =  . Since  is injective, 3 =
+
+.
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  19 / 25
+2.3 4  
+2.3.1 A simple zero                                                                       2.3 4  
+
+    Suppose ()  lim 4 () exists pointwise.
+
+Change coordinates. For   {-1, 1}, set
+
+                                     ()  log(),                                      -1.
+
+                                                                                       
+
+                                     ()  =  (4  )    -1.
+
+                                                       
+
+The ordinary derivative result makes  entire.
+
+Remove the affine part. If   (0) and   (0), define
+
+                                     ()  () -  - -1().
+
+Apply Phragmén-Lindelöf. It forces  = 0. Hence () =  +  on ,
+so () =  and 4 = .
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators           2026-07-29  21 / 25
+2.4 5  2
+2.4.1 A second-order zero                                                        2.4 5  2
+
+Suppose ()  lim 5 () exists pointwise.
+
+Change coordinates. On each half-line, ()  - 1 turns 5 into ordinary
+differentiation, so
+
+                   () = +-1 ( > 0), () = --1 ( < 0).
+At the origin. As   0-, -1  , so smoothness forces - = 0. Also,
+
+(5)(0) = 0 for every smooth , hence (0) = 0.
+
+Conclusion.
+
+                                     () = {-1  > 0
+                                                 0 0
+
+The right-hand term vanishes at 0. Therefore   () and 5 = .
+
+Jake Edmonstone, Matthew Tchouikine  Iteration of linear differential operators  2026-07-29  23 / 25
+3. Future directions
+3.1 Open problems beyond first-order ODEs 3. Future directions
+
+   The guiding question is:
+
+                           pointwise    () and  = ?
+
+1. Higher-order ODEs. Study                                          2.
+
+                                                                
+
+                                () =  ()()(),
+
+                                                               =0
+
+What do we do when the first-order change of coordinates is unavailable?
+2. Partial differential operators.
+
+Jake Edmonstone, Matthew Tchouikine  () =  ()() on ,                                                        2026-07-29  25 / 25
+
+                                                      ||
+
+                                                                Iteration of linear differential operators
+Questions?
+
