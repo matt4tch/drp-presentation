@@ -19,7 +19,7 @@
   },
 )[
   Let $a, b in C^oo (RR)$, with $a$ nowhere zero, and suppose
-  $L_3^n f -> g$ pointwise on $RR$.
+  $ lim_(n->oo) L_3^n f(x)=g(x) $ for every $x in RR$.
 
   As in the $a f'$ case, set
   $
@@ -30,33 +30,63 @@
   For $y in I$, define
   $
     w(y) := exp(integral_0^y beta(s) dif s),
-    quad (T f)(y) := w(y) f(Phi^(-1)(y)).
+    quad H := w dot (f compose Phi^(-1)).
   $
 ]
 
+
+=== Iterated derivatives of $H$
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
   align: top,
   setting: body => {
-    set text(size: 23pt)
-    set block(spacing: 0.80em)
+    set text(size: 24pt)
+    set block(spacing: 0.9em)
     pad(top: 0.4em, body)
   },
 )[
   The chain rule gives
   $
-    T(L_3 f) = (T f)'
+    H' = w dot (L_3 f) compose Phi^(-1).
   $
-  and by induction, we have
+  By induction, we have that for $n>=0$,
   $
-    T(L_3^n f) = (T f)^((n))
+    H^((n)) = w dot (L_3^n f) compose Phi^(-1)
   $
-  for $n>=0$.
 
-  Thus $ lim_(n->oo) (T f)^((n)) = T g. $
+  Therefore, the pointwise limit is
+  $
+    G(y) & := lim_(n->oo) H^((n))(y) \
+         & = w(y) g(Phi^(-1)(y)).
+  $
+  The local ordinary derivative result on $I$ gives $G'=G$.
+]
 
-  The ordinary derivative result gives $T(L_3 g) = (T g)' = T g$.
+=== Recover the fixed-point equation
 
-  Since $T$ is injective, $L_3 g = g$.
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 24pt)
+    set block(spacing: 0.9em)
+    pad(top: 0.4em, body)
+  },
+)[
+  Since
+  $
+    g(x) = G(Phi(x)) / w(Phi(x)),
+  $
+  the function $g$ is smooth. Applying the same chain-rule computation to $g$
+  gives
+  $
+    G'(y) = w(y) (L_3 g)(Phi^(-1)(y)).
+  $
+  Since
+  $
+    G'=G=w(y) g(Phi^(-1)(y))
+  $
+  and $w(y)>0$, we conclude that
+  $L_3 g = g.$
 ]
