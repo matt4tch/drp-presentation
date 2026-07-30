@@ -213,9 +213,9 @@ $
     body
   },
 )[
-  Fix $b$. The integral identity becomes
+  Fix $a$. The integral identity becomes
   $
-    g(x) = g(b) + integral_b^x g(t) dif t.
+    g(x) = g(a) + integral_a^x g(t) dif t.
   $
   Since $g$ is continuous, the Fundamental Theorem of Calculus yields
   $
