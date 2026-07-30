@@ -1,7 +1,7 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
 
-== $L_4 f := x f'$
+== $L_4 f(x) := x f'(x)$
 
 #new-section-slide(level: 2)[]
 

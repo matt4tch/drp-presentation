@@ -1,11 +1,16 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
+#import "../deck-style.typ": section-subtitle
 
 = Extensions
 
 == $L_2 f := a f'$
 
-#new-section-slide(level: 2)[]
+#new-section-slide(level: 2)[
+  #section-subtitle[
+    $a in C^oo (RR)$, with $a$ nowhere zero
+  ]
+]
 
 === The fixed-point equation
 

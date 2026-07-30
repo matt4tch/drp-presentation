@@ -1,7 +1,7 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
 
-== $L_5 f := x^2 f'$
+== $L_5 f(x) := x^2 f'(x)$
 
 #new-section-slide(level: 2)[]
 
@@ -11,14 +11,14 @@
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
   align: top,
   setting: body => {
-    set text(size: 22pt)
-    set block(spacing: 0.5em)
+    set text(size: 23pt)
+    set block(spacing: 1.0em)
     pad(top: 0.6em, body)
   },
 )[
   Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
 
-  On each half-line, a change of coordinates turns
+  On each of $RR^+$ and $RR^-$, a change of coordinates turns
   $L_5$ into ordinary differentiation, so
   $
     g(x) = C_+ e^(-1/x) quad (x > 0),
