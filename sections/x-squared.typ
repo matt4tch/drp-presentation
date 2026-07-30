@@ -26,7 +26,7 @@
     g(x) = C_- e^(-1/x) quad (x < 0).
   $
 
-  *At the origin.* $lim_(x->0^(-))e^(-1/x) = oo$, so smoothness forces
+  *At the origin.* $lim_(x->0^(-))e^(-1/x) = oo$, so which forces
   $C_- = 0$. Also, $(L_5 h)(0) = 0$ for every smooth $h$, hence $g(0) = 0$.
 
   *Conclusion.*
