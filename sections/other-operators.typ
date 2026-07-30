@@ -7,7 +7,7 @@
 
 #new-section-slide(level: 2)[]
 
-=== Absorbing the zeroth-order term
+=== Absorb the zeroth-order term
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
@@ -35,7 +35,7 @@
 ]
 
 
-=== Iterated derivatives of $H$
+=== Iterate derivatives of $H$
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
