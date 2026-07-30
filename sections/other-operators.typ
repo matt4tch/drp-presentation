@@ -21,7 +21,7 @@
   Let $a, b in C^oo (RR)$, with $a$ nowhere zero, and suppose
   $ lim_(n->oo) L_3^n f(x)=g(x) $ for every $x in RR$.
 
-  As in the $a f'$ case, set
+  As in the $a f'$ case, define the change of coordinates map
   $
     Phi(x) := integral_0^x 1/(a(t)) dif t quad (x in RR),
     quad I := Phi(RR),
@@ -30,7 +30,7 @@
   For $y in I$, define
   $
     w(y) := exp(integral_0^y beta(s) dif s),
-    quad H := w dot (f compose Phi^(-1)).
+    quad H := w dot (f compose Phi^(-1)):I -> RR.
   $
 ]
 
@@ -55,13 +55,13 @@
     H^((n)) = w dot (L_3^n f) compose Phi^(-1)
   $
 
-  Therefore, the pointwise limit is
+  Therefore, the pointwise limit
   $
     G(y) & := lim_(n->oo) H^((n))(y) \
          & = lim_(n->oo) w(y) (L^n_3 f)(Phi^(-1)(y)) \
          & = w(y) g(Phi^(-1)(y)).
   $
-  The local ordinary derivative result on $I$ gives $G'=G$.
+  exists. Hence, the local ordinary derivative result on $I$ gives $G'=G$.
 ]
 
 === Recover the fixed-point equation
@@ -79,15 +79,11 @@
   $
     g(x) = G(Phi(x)) / w(Phi(x)),
   $
-  $g$ is smooth. Applying the same chain-rule computation to $g$
-  gives
+  then $g$ is smooth. We also have
   $
-    G'(y) = w(y) (L_3 g)(Phi^(-1)(y)).
+    G' = w dot (L_3 g) compose Phi^(-1).
   $
-  Since
-  $
-    G'=G=w(y) g(Phi^(-1)(y))
-  $
-  and $w(y)>0$, we conclude that
-  $L_3 g = g.$
+  But $G=G'$, so $ w dot (L_3 g) compose Phi^(-1) = w dot g compose Phi^(-1) $
+  and $w$ is nowhere zero, so
+  $ L_3 g = g. $
 ]
