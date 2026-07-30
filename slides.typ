@@ -41,7 +41,7 @@
     institution: [
       #emph[Mentor: Paul Cusson]
       #linebreak()
-      #emph[University of Waterloo, Directed Research Program]
+      #emph[University of Waterloo, WiM Directed Research Program]
     ],
   ),
 )
