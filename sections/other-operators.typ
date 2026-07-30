@@ -58,6 +58,7 @@
   Therefore, the pointwise limit is
   $
     G(y) & := lim_(n->oo) H^((n))(y) \
+         & = lim_(n->oo) w(y) (L^n_3 f)(Phi^(-1)(y)) \
          & = w(y) g(Phi^(-1)(y)).
   $
   The local ordinary derivative result on $I$ gives $G'=G$.
