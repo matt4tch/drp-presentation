@@ -78,7 +78,7 @@
                              & = g(Phi^(-1)(y))
   $
   So, we can define $ G(y) := lim_(n -> oo) F^((n))(y). $
-  The ordinary derivative result on the interval $I$ gives $G' = G$.
+  The local ordinary derivative result on the interval $I$ gives $G' = G$.
 ]
 
 === Recover the fixed-point equation
@@ -86,7 +86,7 @@
 #slide(
   config: config-page(margin: (top: 2em, bottom: 2em, x: 1.6em)),
   setting: body => {
-    set text(size: 21pt)
+    set text(size: 22pt)
     set block(spacing: 0.9em)
     body
   },

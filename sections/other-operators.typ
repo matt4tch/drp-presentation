@@ -13,8 +13,8 @@
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
   align: top,
   setting: body => {
-    set text(size: 21pt)
-    set block(spacing: 0.7em)
+    set text(size: 25pt)
+    set block(spacing: 0.8em)
     pad(top: 0.4em, body)
   },
 )[
@@ -32,14 +32,31 @@
     w(y) := exp(integral_0^y beta(s) dif s),
     quad (T f)(y) := w(y) f(Phi^(-1)(y)).
   $
+]
 
+
+#slide(
+  config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
+  align: top,
+  setting: body => {
+    set text(size: 23pt)
+    set block(spacing: 0.80em)
+    pad(top: 0.4em, body)
+  },
+)[
   The chain rule gives
   $
-    T(L_3 f) = (T f)', quad
-    T(L_3^n f) = (T f)^((n)).
+    T(L_3 f) = (T f)'
   $
+  and by induction, we have
+  $
+    T(L_3^n f) = (T f)^((n))
+  $
+  for $n>=0$.
 
   Thus $ lim_(n->oo) (T f)^((n)) = T g. $
 
-  The ordinary derivative result gives $T(L_3 g) = (T g)' = T g$. Since $T$ is injective, *$L_3 g = g$.*
+  The ordinary derivative result gives $T(L_3 g) = (T g)' = T g$.
+
+  Since $T$ is injective, $L_3 g = g$.
 ]
