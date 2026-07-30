@@ -1,11 +1,16 @@
 #import "@preview/touying:0.7.4": *
 #import themes.university: *
+#import "../deck-style.typ": section-subtitle
 
 // Record the stronger conclusion for this special case.
 
 == $L_3 f := a f' + b f$
 
-#new-section-slide(level: 2)[]
+#new-section-slide(level: 2)[
+  #section-subtitle[
+    $a, b in C^oo (RR)$, with $a$ nowhere zero
+  ]
+]
 
 === Absorb the zeroth-order term
 
