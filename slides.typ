@@ -13,6 +13,7 @@
   header-right: self => pad(
     top: header-title-inset,
     context {
+      set text(fill: theme-secondary)
       let current = utils.current-heading(depth: self.slide-level)
       let parent-level = if current != none and current.level == 3 { 2 } else { 1 }
       (
