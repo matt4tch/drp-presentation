@@ -30,7 +30,7 @@
   For $y in I$, define
   $
     w(y) := exp(integral_0^y beta(s) dif s),
-    quad H := w dot (f compose Phi^(-1)):I -> RR.
+    quad F := w dot (f compose Phi^(-1)):I -> RR.
   $
 ]
 
@@ -48,16 +48,16 @@
 )[
   The chain rule gives
   $
-    H' = w dot (L_3 f) compose Phi^(-1).
+    F' = w dot (L_3 f) compose Phi^(-1).
   $
   By induction, we have that for $n>=0$,
   $
-    H^((n)) = w dot (L_3^n f) compose Phi^(-1)
+    F^((n)) = w dot (L_3^n f) compose Phi^(-1)
   $
 
   Therefore, the pointwise limit
   $
-    G(y) & := lim_(n->oo) H^((n))(y) \
+    G(y) & := lim_(n->oo) F^((n))(y) \
          & = lim_(n->oo) w(y) (L^n_3 f)(Phi^(-1)(y)) \
          & = w(y) g(Phi^(-1)(y)).
   $
