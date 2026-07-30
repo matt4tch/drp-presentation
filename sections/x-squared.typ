@@ -18,23 +18,21 @@
 )[
   Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
 
-  *Change coordinates.* On each half-line, $Phi(x) := -1/x$ turns
+  On each half-line, a change of coordinates turns
   $L_5$ into ordinary differentiation, so
   $
     g(x) = C_+ e^(-1/x) quad (x > 0),
     quad
     g(x) = C_- e^(-1/x) quad (x < 0).
   $
+  One can show that $C_-$ is forced to be $0$.
 
-  *At the origin.* $lim_(x->0^(-))e^(-1/x) = oo$, so which forces
-  $C_- = 0$. Also, $(L_5 h)(0) = 0$ for every smooth $h$, hence $g(0) = 0$.
-
-  *Conclusion.*
+  Therefore,
   $
     g(x) = cases(
-      C e^(-1/x) space & x > 0,
+      C_+ e^(-1/x) space & x > 0,
       0 & x <= 0,
     )
   $
-  The right-hand term vanishes at $0$. Therefore $g in C^oo (RR)$ and $L_5 g = g$.
+  Thus, $g$ is smooth and $L_5 g = g$.
 ]

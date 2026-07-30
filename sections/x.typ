@@ -15,25 +15,7 @@
     body
   },
 )[
-  Suppose $g(x) := lim_(n -> oo) L_4^n f(x)$ exists pointwise.
+  Suppose $ g(x) := lim_(n -> oo) L_4^n f(x) $ exists pointwise.
 
-  *Change coordinates.* For $sigma in {-1,1}$, set
-  $
-    Phi_sigma (x) := log(sigma x),
-    quad
-    F_sigma := f compose Phi_sigma^(-1).
-  $
-  $
-    F_sigma^((n))
-    = (L_4^n f) compose Phi_sigma^(-1).
-  $
-  The ordinary derivative result makes $F_sigma$ entire.
-
-  *Remove the affine part.* If $a:=f(0)$ and $b:=f'(0)$, define
-  $
-    H_sigma (y) := F_sigma (y) - a - b Phi_sigma^(-1) (y).
-  $
-
-  *Apply Phragmén–Lindelöf.* It forces $H_sigma=0$. Hence
-  $f(x)=a+b x$ on $RR$, so $g(x)=b x$ and $L_4 g=g$.
+  The rigidity of $L_4$ forces $ f(x)=c_1+c_2 x $ for some $c_1, c_2 in RR$. So, $ g(x)=c_2 x $ for all $x in RR$ and $ L_4 g=g. $
 ]
