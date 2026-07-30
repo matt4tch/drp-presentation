@@ -27,9 +27,9 @@
   $
   exists for every $x in RR$.
 
-  We will show that
+  We will show that:
   $
-    L_2 g = g.
+    g "is smooth and" L_2 g = g
   $
 ]
 
