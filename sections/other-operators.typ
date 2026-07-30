@@ -79,7 +79,7 @@
   $
     g(x) = G(Phi(x)) / w(Phi(x)),
   $
-  the function $g$ is smooth. Applying the same chain-rule computation to $g$
+  $g$ is smooth. Applying the same chain-rule computation to $g$
   gives
   $
     G'(y) = w(y) (L_3 g)(Phi^(-1)(y)).
