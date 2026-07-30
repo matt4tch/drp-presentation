@@ -17,3 +17,13 @@
 #let intro-paper = rgb("#F5F3EF")
 #let intro-border = rgb("#D7DEE2")
 #let header-title-inset = 0.4em
+
+#let section-subtitle(body) = [
+  #v(-0.8em)
+  #set text(
+    size: 0.65em,
+    fill: theme-secondary,
+    weight: "regular",
+  )
+  #align(center, body)
+]
