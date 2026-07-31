@@ -52,8 +52,7 @@
   $
     Phi: RR -> RR, x mapsto integral_0^x 1/(a(t)) dif t.
   $
-  It can be verified that $Phi$ is a well-defined diffeomorphism from $RR$ onto an open interval
-  $I := Phi(RR)$. Set
+  It can be verified that $Phi$ is a well-defined diffeomorphism from $RR$ onto its image. Moreover, $I := Phi(RR)$ is an open interval. Set
   $
     F := f compose Phi^(-1): I -> RR.
   $
@@ -77,7 +76,7 @@
     body
   },
 )[
-  Note that the following limit exists:
+  Note that the following limit exists for $y in I$:
   $
     lim_(n -> oo) F^((n))(y) & = lim_(n -> oo) (L_2^n f)(Phi^(-1)(y)) \
                              & = g(Phi^(-1)(y))
@@ -96,7 +95,7 @@
     body
   },
 )[
-  Since $G = g compose Phi^(-1)$, then $g = G compose Phi$. Since $G=G'$, then $g$ is smooth.
+  Since $G = g compose Phi^(-1)$, then $g = G compose Phi$. But $G=G'$, so $g$ is smooth.
 
   By the Fundamental Theorem of Calculus, $Phi' = 1/a$, so
   $
