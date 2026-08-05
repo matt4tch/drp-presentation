@@ -9,13 +9,10 @@ if ! command -v typst >/dev/null 2>&1; then
 fi
 
 repo_root="$(git rev-parse --show-toplevel)"
-tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/drp-pre-commit.XXXXXX")"
-trap 'rm -rf "$tmp_dir"' EXIT
-
 cd "$repo_root"
 
 for source in slides.typ drp.typ; do
-  output="$tmp_dir/${source%.typ}.pdf"
+  output="${source%.typ}.pdf"
   printf 'pre-commit: compiling %s...\n' "$source"
   if ! typst compile "$source" "$output"; then
     printf 'pre-commit: %s failed to compile.\n' "$source" >&2
@@ -23,3 +20,6 @@ for source in slides.typ drp.typ; do
   fi
   printf 'pre-commit: %s compiled successfully.\n' "$source"
 done
+
+git add -- slides.pdf drp.pdf
+printf '%s\n' 'pre-commit: staged slides.pdf and drp.pdf.'

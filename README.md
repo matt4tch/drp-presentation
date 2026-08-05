@@ -44,5 +44,6 @@ enable the repository's versioned Git hooks:
 git config core.hooksPath .githooks
 ```
 
-The pre-commit hook compiles `slides.typ` and `drp.typ` to temporary PDFs and
-blocks the commit if Typst is unavailable or either compilation fails.
+The pre-commit hook regenerates the tracked `slides.pdf` and `drp.pdf` files,
+stages them for the current commit, and blocks the commit if Typst is
+unavailable or either compilation fails.
