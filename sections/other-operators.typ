@@ -60,5 +60,5 @@
          & = lim_(n->oo) w(y) dot (L^n_3 f)(Phi^(-1)(y)) \
          & = w(y) dot g(Phi^(-1)(y)).
   $
-  exists. As before, we have $G'=G$, so $ L_3 g = g. $
+  exists. Moreover, $ g= (G compose Phi)/(w compose Phi) $ so $g$ is smooth. As before, we have $G'=G$, so $L_3 g = g.$
 ]
