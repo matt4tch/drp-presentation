@@ -15,7 +15,7 @@
     body
   },
 )[
-  Suppose $ g(x) := lim_(n -> oo) L_4^n f(x) $ exists pointwise.
+  Suppose that for every $x in RR$, the limit $ g(x) := lim_(n -> oo) L_4^n f(x) $ exists.
 
   The rigidity of $L_4$ forces $ f(x)=c_1+c_2 x $ for some $c_1, c_2 in RR$. So, $ g(x)=c_2 x $ for all $x in RR$ and $ L_4 g=g. $
 ]

@@ -16,7 +16,7 @@
     pad(top: 0.6em, body)
   },
 )[
-  Suppose $g(x) := lim_(n -> oo) L_5^n f(x)$ exists pointwise.
+  Suppose that for every $x in RR$, the limit $g(x) := lim_(n -> oo) L_5^n f(x)$ exists.
 
   On each of $RR^+$ and $RR^-$, a change of coordinates turns
   $L_5$ into ordinary differentiation, so

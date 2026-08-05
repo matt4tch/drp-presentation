@@ -3,7 +3,7 @@
 
 = Future directions
 
-== Open problems beyond first-order ODEs
+== Beyond first-order differential operators
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
@@ -19,7 +19,7 @@
     lim_(n->oo) L^n f = g "pointwise" quad ==> quad g "is smooth and" L g = g?
   $
 
-  *1. Higher-order ODEs.* Study
+  *1. Higher-order ordinary differential operators.*
   $
     L f(x) = sum_(k=0)^m a_k (x) f^((k))(x), quad m >= 2.
   $

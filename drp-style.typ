@@ -35,6 +35,7 @@
   variant: [Problem],
   fill: rgb("#eef7ff"),
   numbering: none,
+  sans: false,
   title-fonts: (main-font,),
 )
 
@@ -42,6 +43,7 @@
   color: colors.dark-red,
   variant: [Theorem],
   fill: rgb("#fdf1f2"),
+  sans: false,
   title-fonts: (main-font,),
 )
 
@@ -49,6 +51,7 @@
   color: colors.light-blue,
   variant: [Proposition],
   fill: rgb("#f4f6fd"),
+  sans: false,
   title-fonts: (main-font,),
 )
 
@@ -56,6 +59,7 @@
   color: colors.light-turquoise,
   variant: [Lemma],
   fill: rgb("#f0fbf8"),
+  sans: false,
   title-fonts: (main-font,),
 )
 
@@ -63,6 +67,7 @@
   color: colors.orange,
   variant: [Definition],
   fill: rgb("#fff4e6"),
+  sans: false,
   title-fonts: (main-font,),
 )
 
@@ -70,6 +75,7 @@
   color: colors.gray,
   variant: [Remark],
   fill: rgb("#f8f8f8"),
+  sans: false,
   title-fonts: (main-font,),
 )
 
