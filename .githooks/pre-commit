@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -eu
+
+if ! command -v typst >/dev/null 2>&1; then
+  printf '%s\n' 'pre-commit: Typst is required to compile slides.typ.' >&2
+  printf '%s\n' 'Install Typst and try the commit again.' >&2
+  exit 1
+fi
+
+repo_root="$(git rev-parse --show-toplevel)"
+tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/drp-slides-pre-commit.XXXXXX")"
+trap 'rm -rf "$tmp_dir"' EXIT
+
+cd "$repo_root"
+
+printf '%s\n' 'pre-commit: compiling slides.typ...'
+if ! typst compile slides.typ "$tmp_dir/slides.pdf"; then
+  printf '%s\n' 'pre-commit: slides.typ failed to compile.' >&2
+  exit 1
+fi
+printf '%s\n' 'pre-commit: slides.typ compiled successfully.'

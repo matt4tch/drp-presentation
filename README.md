@@ -34,3 +34,15 @@ typst compile slides.typ
 This produces `drp.pdf` and `slides.pdf` in the repository root. The slides use
 the Typst packages `touying`, `thmbox`, and `numbly`, which Typst downloads
 automatically when needed.
+
+## Commit hook
+
+To compile the slides automatically before each commit, enable the repository's
+versioned Git hooks:
+
+```sh
+git config core.hooksPath .githooks
+```
+
+The pre-commit hook compiles `slides.typ` to a temporary PDF and blocks the
+commit if Typst is unavailable or compilation fails.
