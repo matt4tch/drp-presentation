@@ -37,12 +37,12 @@ automatically when needed.
 
 ## Commit hook
 
-To compile the slides automatically before each commit, enable the repository's
-versioned Git hooks:
+To compile the presentation and write-up automatically before each commit,
+enable the repository's versioned Git hooks:
 
 ```sh
 git config core.hooksPath .githooks
 ```
 
-The pre-commit hook compiles `slides.typ` to a temporary PDF and blocks the
-commit if Typst is unavailable or compilation fails.
+The pre-commit hook compiles `slides.typ` and `drp.typ` to temporary PDFs and
+blocks the commit if Typst is unavailable or either compilation fails.
