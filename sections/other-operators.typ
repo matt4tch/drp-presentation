@@ -38,7 +38,7 @@
 ]
 
 
-=== Iterate derivatives of $H$
+=== Iterate derivatives of $F$
 
 #slide(
   config: config-page(margin: (top: 2em, bottom: 1.5em, x: 1.6em)),
